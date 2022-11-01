@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 19:40:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/10/30 15:04:48 by ttachi           ###   ########.fr       */
+/*   Created: 2022/10/12 19:47:48 by ttachi            #+#    #+#             */
+/*   Updated: 2022/10/31 18:01:42 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+void	ft_putstr_fd(char *s, int fd)
+{
+	size_t	s_len;
 
-# include <stdarg.h>
-
-#endif
+	if (s == NULL)
+		return ;
+	s_len = ft_strlen(s);
+	if (s_len > INT_MAX)
+	{
+		write(fd, s, INT_MAX);
+		write(fd, &s[INT_MAX], s_len - INT_MAX);
+	}
+	else
+		write(fd, s, s_len);
+}

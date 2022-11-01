@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 19:40:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/10/30 15:04:48 by ttachi           ###   ########.fr       */
+/*   Created: 2022/10/06 20:53:12 by ttachi            #+#    #+#             */
+/*   Updated: 2022/10/31 18:01:31 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+size_t	ft_strlen(const char *str)
+{
+	size_t	num;
 
-# include <stdarg.h>
-
-#endif
+	num = 0;
+	while (str[num] != '\0')
+		num++;
+	return (num);
+}
