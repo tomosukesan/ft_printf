@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_unsigned_low_hex.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 19:47:48 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/02 17:11:29 by ttachi           ###   ########.fr       */
+/*   Created: 2022/11/02 17:40:45 by ttachi            #+#    #+#             */
+/*   Updated: 2022/11/02 17:57:51 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_putstr_fd(char *s, int fd)
+int	ft_unsigned_low_hex(const char **argv, va_list ap)
 {
-	size_t	s_len;
+	unsigned int	x;
+	unsigned int	digit;
 
-	if (s == NULL)
-		return (0);
-	s_len = ft_strlen(s);
-	if (s_len > INT_MAX)
-	{
-		write(fd, s, INT_MAX);
-		write(fd, &s[INT_MAX], s_len - INT_MAX);
-	}
-	else
-		write(fd, s, s_len);
-	return ((int)s_len);
+	digit = 1;
+	// 配列マクロをヘッダーで宣言して〜〜。
+	return (digit);
 }
