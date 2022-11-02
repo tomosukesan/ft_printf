@@ -6,9 +6,11 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 20:53:12 by ttachi            #+#    #+#             */
-/*   Updated: 2022/10/31 18:01:31 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/02 11:16:52 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libftprintf.h"
 
 size_t	ft_strlen(const char *str)
 {

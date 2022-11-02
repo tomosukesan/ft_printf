@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_str_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 19:11:22 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/02 11:17:03 by ttachi           ###   ########.fr       */
+/*   Created: 2022/11/02 15:01:41 by ttachi            #+#    #+#             */
+/*   Updated: 2022/11/02 15:07:53 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_str_print(const char **argv, va_list ap)
 {
-	long long	devisor;
-	long long	tmp;
-	char		num;
+	char	*s;
 
-	devisor = 1;
-	tmp = (long long)n;
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		tmp *= -1;
-	}
-	while (n <= -10 || n >= 10)
-	{
-		devisor *= 10;
-		n /= 10;
-	}
-	while (devisor)
-	{
-		num = (char)(tmp / devisor);
-		ft_putchar_fd(num + '0', fd);
-		tmp %= devisor;
-		devisor /= 10;
-	}
+	s = va_arg(ap, char *);
+	ft_putstr_fd(s, 1);
+	argv++;
+	return ((int)ft_strlen(s));
 }

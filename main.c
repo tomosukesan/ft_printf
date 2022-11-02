@@ -2,8 +2,9 @@
 
 int	main(void)
 {
-	char s[] = "ttachi";
+	char c = 't';
+	char s[] = "tachi";
 	int	year = 26;
-	ft_printf("My name is %s.\nI'm %d.\n", s, year);
+	ft_printf("My name is %c%s.\nI'm %d.\n", c, s, year);
 	return (0);
 }

@@ -6,9 +6,11 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 20:03:13 by ttachi            #+#    #+#             */
-/*   Updated: 2022/10/31 17:59:31 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/02 11:17:07 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libftprintf.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
