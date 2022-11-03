@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_low_hex_print.c                                 :+:      :+:    :+:   */
+/*   ft_hex_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 17:40:45 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/03 20:37:44 by ttachi           ###   ########.fr       */
+/*   Created: 2022/11/03 18:45:39 by ttachi            #+#    #+#             */
+/*   Updated: 2022/11/03 20:17:14 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_low_hex_print(const char **argv, va_list ap)
+int	ft_hex_print(unsigned int num, char *rule, int digit)
 {
-	unsigned int	x;
-	int				digit;
-
-	digit = 1;
-	x = va_arg(ap, unsigned int);
-	digit = ft_hex_print(x, LOWERCASE_HEX, digit);
-	argv++;
+	if (num < 16)
+	{
+		ft_putchar_fd(rule[num % 16], 1);
+		return (digit);
+	}
+	digit = ft_hex_print(num / 16, rule, digit) + 1;
+	ft_putchar_fd(rule[num % 16], 1);
 	return (digit);
 }

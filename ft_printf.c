@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/02 17:29:44 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/03 20:39:58 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	ft_printf(const char *argv, ...)
 			else if (*argv == 'd' || *argv == 'i')
 				result += ft_nbr_print(&argv, ap);
 			else if (*argv == 'u')
-				result += ft_unsigned_decimal(&argv, ap);
+				result += ft_decimal_print(&argv, ap);
 			else if (*argv == 'x')
-				result += ft_unsigned_low_hex(&argv, ap);
+				result += ft_low_hex_print(&argv, ap);
 			else if (*argv == 'X')
-				result += ft_unsigned_up_hex(&argv, ap);
+				result += ft_up_hex_print(&argv, ap);
 			else if (*argv == '%')
 				write(1, argv, 1);
 			argv++;

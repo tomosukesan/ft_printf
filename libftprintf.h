@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:40:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/02 19:56:29 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/03 20:39:27 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include <limits.h>
 # include <stddef.h>
 
-# define LOWERCASE_HEX "123456789abcdef"
-# define UPPERCASE_HEX "123456789ABCDEF"
+# define LOWERCASE_HEX "0123456789abcdef"
+# define UPPERCASE_HEX "0123456789ABCDEF"
 
 size_t	ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
 void	ft_putchar_fd(char c, int fd);
 int		ft_printf(const char *argv, ...);
 int		ft_chr_print(const char **argv, va_list ap);
@@ -31,5 +33,8 @@ int		ft_nbr_print(const char **argv, va_list ap);
 int		ft_putnbr_fd(int n, int fd, int digit);
 int		ft_decimal_print(const char **argv, va_list ap);
 int		ft_low_hex_print(const char **argv, va_list ap);
+int		ft_up_hex_print(const char **argv, va_list ap);
+int		ft_hex_print(unsigned int num, char *rule, int digit);
+char	*ft_strdup(const char *s1);
 
 #endif

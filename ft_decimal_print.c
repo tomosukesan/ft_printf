@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned_decimal.c                              :+:      :+:    :+:   */
+/*   ft_decimal_print.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:02:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/02 17:21:24 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/03 19:37:04 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_put_plusnbr_fd(unsigned int n, int fd, int digit);
 
-int	ft_unsigned_decimal(const char **argv, va_list ap)
+int	ft_decimal_print(const char **argv, va_list ap)
 {
 	int				digit;
 	unsigned int	u;
