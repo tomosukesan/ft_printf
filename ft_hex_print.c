@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hex_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:45:39 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/03 20:17:14 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/04 19:43:51 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_hex_print(unsigned int num, char *rule, int digit)
+int	ft_hex_print(unsigned long long num, char *rule, int digit)
 {
 	if (num < 16)
 	{

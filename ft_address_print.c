@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_up_hex_print.c                                  :+:      :+:    :+:   */
+/*   ft_address_print.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 20:27:37 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/04 19:47:26 by ttachi           ###   ########.fr       */
+/*   Created: 2022/11/04 05:53:52 by ttachi            #+#    #+#             */
+/*   Updated: 2022/11/04 19:49:42 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_up_hex_print(const char **argv, va_list ap)
+int	ft_address_print(const char **argv, va_list ap)
 {
-	size_t	x;
-	int		digit;
+	unsigned long long	p;
+	int					digit;
 
-	digit = 1;
-	x = va_arg(ap, size_t);
-	digit = ft_hex_print(x, UPPERCASE_HEX, digit);
+	//digit = 0;
+	p = va_arg(ap, unsigned long long);
+	digit = ft_putstr_fd("0x", 1);
+	digit += ft_hex_print(p, LOWERCASE_HEX, digit);
+	//digit = ft_hex_print(p, LOWERCASE_HEX, digit);
 	argv++;
 	return (digit);
 }

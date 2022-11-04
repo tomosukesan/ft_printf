@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/03 20:39:58 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/04 05:54:53 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ int	ft_printf(const char *argv, ...)
 			else if (*argv == 's')
 				result += ft_str_print(&argv, ap);
 			else if (*argv == 'p')
-			{
-				//c = va_arg(ap, int);
-				//ft_putchar_fd(c, 1);
-			}
+				result += ft_address_print(&argv, ap);
 			else if (*argv == 'd' || *argv == 'i')
 				result += ft_nbr_print(&argv, ap);
 			else if (*argv == 'u')

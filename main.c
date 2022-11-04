@@ -19,9 +19,13 @@ int	main(void)
 	printf("%d\n", tmp);				// 10 + 1
 	tmp = ft_printf("%x\n", INT_MAX);	// 7fffffff
 	printf("%d\n", tmp);				// 9
-	puts("++++++++++++++++++++");
 	tmp = ft_printf("%X\n", 6852);
 	printf("%d\n", tmp);				// 2 + 1
+	puts("++++++++++++++++++++");
+	tmp = ft_printf("%p\n", &tmp);
+	printf("%d\n", tmp);
+	tmp = printf("%p\n", &tmp);
+	printf("%d\n", tmp);
 
 	return (0);
 }
