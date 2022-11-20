@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/04 05:54:53 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/20 14:50:43 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	ft_printf(const char *argv, ...)
 	{
 		if (*argv == '%')
 		{
-			if (*(++argv) == 'c')
+			argv++;
+			if (*argv == 'c' || *argv == '%')
 				result += ft_chr_print(&argv, ap);
 			else if (*argv == 's')
 				result += ft_str_print(&argv, ap);
@@ -37,8 +38,8 @@ int	ft_printf(const char *argv, ...)
 				result += ft_low_hex_print(&argv, ap);
 			else if (*argv == 'X')
 				result += ft_up_hex_print(&argv, ap);
-			else if (*argv == '%')
-				write(1, argv, 1);
+			// else if (*argv == '%')
+			// 	write(1, argv, 1);
 			argv++;
 		}
 		else

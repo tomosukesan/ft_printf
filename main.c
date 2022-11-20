@@ -24,8 +24,10 @@ int	main(void)
 	puts("++++++++++++++++++++");
 	tmp = ft_printf("%p\n", &tmp);
 	printf("%d\n", tmp);
-	tmp = printf("%p\n", &tmp);
+	tmp = ft_printf("%p\n", &tmp);
 	printf("%d\n", tmp);
+	tmp = ft_printf("%s\n", NULL);
+	printf("%d\n", tmp);			// 6 + 1
 
 	return (0);
 }
