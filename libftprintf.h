@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:40:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/22 22:49:23 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/24 17:51:21 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stddef.h>
+# include <inttypes.h>
 
 # define LOWERCASE_HEX "0123456789abcdef"
 # define UPPERCASE_HEX "0123456789ABCDEF"
@@ -36,7 +37,5 @@ int		ft_low_hex_print(const char **argv, va_list ap);
 int		ft_up_hex_print(const char **argv, va_list ap);
 int		ft_hex_print(unsigned int num, char *rule, int digit);
 int		ft_address_print(const char **argv, va_list ap);
-int		ft_judge_format(const char **argv, va_list ap);
-char	*ft_strdup(const char *s1);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:02:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/03 19:37:04 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/24 17:31:25 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_decimal_print(const char **argv, va_list ap)
 	unsigned int	u;
 
 	digit = 1;
-	u = va_arg(ap, int);
+	u = va_arg(ap, unsigned int);
 	digit = ft_put_plusnbr_fd(u, 1, digit);
 	argv++;
 	return (digit);

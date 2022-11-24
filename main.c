@@ -22,12 +22,16 @@ int	main(void)
 	tmp = ft_printf("%X\n", 6852);
 	printf("%d\n", tmp);				// 2 + 1
 	puts("++++++++++++++++++++");
-	tmp = ft_printf("%p\n", &tmp);
+	tmp = printf("%p\n", &tmp);
+	printf("printf   :");
 	printf("%d\n", tmp);
 	tmp = ft_printf("%p\n", &tmp);
+	printf("ft_printf:");
 	printf("%d\n", tmp);
 	tmp = ft_printf("%s\n", NULL);
 	printf("%d\n", tmp);			// 6 + 1
+	tmp = ft_printf("%u\n", -1);	// 4294967295
+	printf("%d\n", tmp);			// 10 + 1
 
 	return (0);
 }

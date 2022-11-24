@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_process_detail.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 08:59:09 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/23 09:00:57 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/24 14:56:47 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+// #include "libftprintf.h"
 
-int	ft_process_detail(const char **argv, va_list ap)
-{
-	int	result;
+// int	ft_process_detail(const char **argv, va_list ap)
+// {
+// 	int	result;
 
-	result = 0;
-	// ここから条件分岐
-}
+// 	result = 0;
+// 	// ここから条件分岐
+// }

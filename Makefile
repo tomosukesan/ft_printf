@@ -7,7 +7,6 @@ SRCS = ft_printf.c \
 	ft_putstr_fd.c \
 	ft_strlen.c \
 	ft_strlcpy.c \
-	ft_strdup.c \
 	ft_chr_print.c \
 	ft_str_print.c \
 	ft_nbr_print.c \
@@ -15,8 +14,7 @@ SRCS = ft_printf.c \
 	ft_low_hex_print.c \
 	ft_up_hex_print.c \
 	ft_hex_print.c \
-	ft_address_print.c \
-	ft_judge_format.c
+	ft_address_print.c
 OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)
