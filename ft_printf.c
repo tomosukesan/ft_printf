@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/24 17:23:10 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/25 18:58:00 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	ft_judge_format(const char **argv, va_list ap);
+static int	judge_format(const char **argv, va_list ap);
 
 int	ft_printf(const char *argv, ...)
 {
@@ -24,7 +24,7 @@ int	ft_printf(const char *argv, ...)
 	while (*argv != '\0')
 	{
 		if (*argv == '%')
-			result += ft_judge_format(&argv, ap);
+			result += judge_format(&argv, ap);
 		else
 		{
 			write(1, argv, 1);
@@ -36,7 +36,7 @@ int	ft_printf(const char *argv, ...)
 	return (result);
 }
 
-static int	ft_judge_format(const char **argv, va_list ap)
+static int	judge_format(const char **argv, va_list ap)
 {
 	int	result;
 
@@ -58,8 +58,6 @@ static int	ft_judge_format(const char **argv, va_list ap)
 		result = ft_up_hex_print(argv, ap);
 	else if (**argv == '%')
 		result = ft_putchar_fd('%', 1);
-	// else
-	// 	result = ft_process_detail(argv, ap);
 	(*argv)++;
 	return (result);
 }

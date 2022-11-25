@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:40:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/24 17:51:21 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/24 19:53:10 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 # define LOWERCASE_HEX "0123456789abcdef"
 # define UPPERCASE_HEX "0123456789ABCDEF"
 
-size_t	ft_strlen(const char *str);
-size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
 int		ft_printf(const char *argv, ...);
 int		ft_chr_print(const char **argv, va_list ap);
 int		ft_putchar_fd(char c, int fd);

@@ -5,8 +5,6 @@ SRCS = ft_printf.c \
 	ft_putchar_fd.c \
 	ft_putnbr_fd.c \
 	ft_putstr_fd.c \
-	ft_strlen.c \
-	ft_strlcpy.c \
 	ft_chr_print.c \
 	ft_str_print.c \
 	ft_nbr_print.c \
