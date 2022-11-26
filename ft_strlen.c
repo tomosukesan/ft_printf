@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chr_print.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 14:38:40 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/26 19:44:11 by ttachi           ###   ########.fr       */
+/*   Created: 2022/11/26 16:17:12 by ttachi            #+#    #+#             */
+/*   Updated: 2022/11/26 17:39:47 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_chr_print(const char **argv, va_list ap, t_flags flag)
+int	ft_strlen(const char *str)
 {
-	char	c;
-	int		result;
+	int	len;
 
-	c = va_arg(ap, int);
-	if (flag.width <= 1)
-	{
-		ft_putchar_fd(c, 1);
-		return (1);
-	}
-	result = flag.width;
-	if (flag.minus == TRUE)
-	{
-		ft_putchar_fd(c, 1);
-		while (--flag.width)
-			ft_putchar_fd(' ', 1);
-	}
-	else
-	{
-		while (--flag.width)
-			ft_putchar_fd(' ', 1);
-		ft_putchar_fd(c, 1);
-	}
-	argv++;
-	return (result);
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }

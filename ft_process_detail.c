@@ -6,11 +6,11 @@
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 08:59:09 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/24 14:56:47 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/26 14:46:09 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libftprintf.h"
+// #include "ft_printf.h"
 
 // int	ft_process_detail(const char **argv, va_list ap)
 // {

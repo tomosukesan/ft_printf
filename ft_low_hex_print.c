@@ -6,11 +6,11 @@
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:40:45 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/24 17:04:01 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/26 14:46:01 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_low_hex_print(const char **argv, va_list ap)
 {

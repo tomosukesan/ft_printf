@@ -6,11 +6,11 @@
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:02:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/24 17:31:25 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/26 14:45:57 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	ft_put_plusnbr_fd(unsigned int n, int fd, int digit);
 

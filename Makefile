@@ -2,6 +2,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME =  libftprintf.a
 SRCS = ft_printf.c \
+	ft_strlen.c \
 	ft_putchar_fd.c \
 	ft_putnbr_fd.c \
 	ft_putstr_fd.c \
@@ -12,7 +13,8 @@ SRCS = ft_printf.c \
 	ft_low_hex_print.c \
 	ft_up_hex_print.c \
 	ft_hex_print.c \
-	ft_address_print.c
+	ft_address_print.c \
+	ft_check_flag.c
 OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)

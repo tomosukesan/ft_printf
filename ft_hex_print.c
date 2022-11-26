@@ -6,11 +6,11 @@
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:45:39 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/24 17:04:09 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/26 14:45:59 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_hex_print(unsigned int num, char *rule, int digit)
 {

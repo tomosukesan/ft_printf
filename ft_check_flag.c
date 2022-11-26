@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chr_print.c                                     :+:      :+:    :+:   */
+/*   ft_check_flag.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 14:38:40 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/26 19:44:11 by ttachi           ###   ########.fr       */
+/*   Created: 2022/11/26 18:03:38 by ttachi            #+#    #+#             */
+/*   Updated: 2022/11/26 18:52:16 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_chr_print(const char **argv, va_list ap, t_flags flag)
+void	ft_check_minus_zero(const char **argv, t_flags *flag)
 {
-	char	c;
-	int		result;
+	if (**argv == '-')
+		flag->minus = TRUE;
+	else if (**argv == '0')
+		flag->zero = TRUE;
+	(*argv)++;
+}
 
-	c = va_arg(ap, int);
-	if (flag.width <= 1)
+int	ft_cal_width(const char **argv)
+{
+	int	result;
+
+	while ('0' <= **argv && **argv <= '9')
 	{
-		ft_putchar_fd(c, 1);
-		return (1);
+		if (result >= (INT_MAX - (**argv - '0')) / 10)
+			return (-1);
+		result = result * 10 + (**argv - '0');
+		(*argv)++;
 	}
-	result = flag.width;
-	if (flag.minus == TRUE)
-	{
-		ft_putchar_fd(c, 1);
-		while (--flag.width)
-			ft_putchar_fd(' ', 1);
-	}
-	else
-	{
-		while (--flag.width)
-			ft_putchar_fd(' ', 1);
-		ft_putchar_fd(c, 1);
-	}
-	argv++;
 	return (result);
 }
