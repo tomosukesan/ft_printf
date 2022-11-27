@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:01:41 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/26 23:18:26 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/27 15:34:43 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_str_print(const char **argv, va_list ap, t_flags flag)
 		return (ft_putstr_fd("(null)", 1));
 	s_len = ft_strlen(s);
 	result = 0;
-	if (s_len > flag.width)
+	if (s_len >= flag.width)
 	{
 		result = s_len;
 		ft_putstr_fd(s, 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/27 13:46:45 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:10:03 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	ft_printf(const char *argv, ...)
 			argv++;
 			result += judge_detail(&argv, ap);		// 失敗の処理を追加
 			// result += judge_format(&argv, ap);
+			if (result < 0)
+				return (-1);
 			argv++;
 		}
 		else
@@ -45,7 +47,7 @@ int	ft_printf(const char *argv, ...)
 
 static int	judge_detail(const char **argv, va_list ap)
 {
-	t_flags	flag;		//printf("%- 10d\n", year)
+	t_flags	flag;
 
 	ft_memset(&flag, 0, 8);
 	if (**argv == '-' || **argv == '0')
@@ -59,6 +61,8 @@ static int	judge_detail(const char **argv, va_list ap)
 		ft_check_sharp(argv, &flag);
 	if ('1' <= **argv && **argv <= '9')
 		flag.width = ft_cal_width(argv);
+	if (flag.width == -1)
+		return (INT_MIN);	// とりあえずINTMINを返して負の数にしている
 	return (judge_format(argv, ap, flag));
 }
 
@@ -87,7 +91,7 @@ static int	judge_format(const char **argv, va_list ap, t_flags flag)
 	else if (**argv == 's')
 		result = ft_str_print(argv, ap, flag);
 	else if (**argv == 'p')
-		result = ft_address_print(argv, ap);
+		result = ft_address_print(argv, ap, flag);
 	else if (**argv == 'd' || **argv == 'i')
 		result = ft_nbr_print(argv, ap, flag);
 	else if (**argv == 'u')

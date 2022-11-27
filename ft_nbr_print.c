@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nbr_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/27 10:04:10 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/27 17:25:21 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ int	ft_nbr_print(const char **argv, va_list ap, t_flags flag)
 	if (digit >= flag.width)
 	{
 		result = digit;
+		if (flag.space && num >= 0)
+		{
+			ft_putchar_fd(' ', 1);
+			result++;
+		}
+		else if (flag.plus && num >= 0)
+		{
+			ft_putchar_fd('+', 1);
+			result++;
+		}
 		ft_putnbr_fd(num, 1, digit);
 	}
 	else if (digit < flag.width)
@@ -44,12 +54,12 @@ int	ft_nbr_print(const char **argv, va_list ap, t_flags flag)
 
 static void	adapt_flags_with_minus(int num, int digit, t_flags flag)
 {
-	if (flag.space)
+	if (flag.space && num >= 0)
 	{
 		ft_putchar_fd(' ', 1);
 		flag.width--;
 	}
-	else if (flag.plus)
+	else if (flag.plus && num >= 0)
 	{
 		ft_putchar_fd('+', 1);
 		flag.width--;
@@ -64,19 +74,29 @@ static void	adapt_flags(int num, int digit, t_flags flag)
 	char	c;
 
 	c = ' ';
-	if (flag.space)
+	if (flag.space && num >= 0)
 	{
 		ft_putchar_fd(' ', 1);
 		flag.width--;
 	}
-	else if (flag.plus)
+	else if (flag.plus && num >= 0)
 	{
 		ft_putchar_fd('+', 1);
 		flag.width--;
 	}
 	if (flag.zero)
 		c = '0';
-	while (flag.width--)
-		ft_putchar_fd(c, 1);
-	ft_putnbr_fd(num, 1, digit);
+	if (num < 0)
+	{
+		ft_putchar_fd('-', 1);
+		while (flag.width--)
+			ft_putchar_fd(c, 1);
+		ft_putnbr_fd(num * -1, 1, digit);
+	}
+	else
+	{
+		while (flag.width--)
+			ft_putchar_fd(c, 1);
+		ft_putnbr_fd(num, 1, digit);
+	}
 }
