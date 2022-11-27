@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:11:22 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/26 14:46:15 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/26 22:19:42 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ int	ft_putnbr_fd(int n, int fd, int digit)
 	{
 		ft_putchar_fd('-', fd);
 		tmp *= -1;
-		digit++;
 	}
 	while (n <= -10 || n >= 10)
 	{
 		devisor *= 10;
 		n /= 10;
-		digit++;
 	}
 	while (devisor)
 	{

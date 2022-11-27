@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chr_print.c                                     :+:      :+:    :+:   */
+/*   ft_cal_digit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 14:38:40 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/26 23:18:36 by ttachi           ###   ########.fr       */
+/*   Created: 2022/11/27 10:03:19 by ttachi            #+#    #+#             */
+/*   Updated: 2022/11/27 10:51:18 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+# include "ft_printf.h"
 
-int	ft_chr_print(const char **argv, va_list ap, t_flags flag)
+int	ft_cal_digit(long long num)
 {
-	char	c;
-	int		result;
+	int	digit;
 
-	c = va_arg(ap, int);
-	if (flag.width <= 1)
+	digit = 0;
+	if (num <= 0)
+		digit++;
+	while (num != 0)
 	{
-		ft_putchar_fd(c, 1);
-		return (1);
+		digit++;
+		num /= 10;
 	}
-	result = flag.width;
-	if (flag.minus)
-	{
-		ft_putchar_fd(c, 1);
-		while (--flag.width)
-			ft_putchar_fd(' ', 1);
-	}
-	else
-	{
-		while (--flag.width)
-			ft_putchar_fd(' ', 1);
-		ft_putchar_fd(c, 1);
-	}
-	argv++;
-	return (result);
+	return (digit);
+}
+
+int	ft_cal_hex_digit(unsigned int num, int digit)
+{
+	if (num < 16)
+		return (++digit);
+	digit++;
+	digit = ft_cal_hex_digit(num / 16, digit);
+	return (digit);
 }

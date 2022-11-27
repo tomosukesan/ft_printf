@@ -47,6 +47,8 @@ void	bonus()
 
 	tmp = ft_printf("%10s\n", s);			//      tachi
 	printf("%d\n", tmp);					// 10 + 1
+	tmp = ft_printf("%3s\n", s);			// tachi
+	printf("%d\n", tmp);					// 5 + 1
 	tmp = ft_printf("%-10s%s\n", s, s);		// tachi     tachi
 	printf("%d\n", tmp);					// 15 + 1
 	// tmp = ft_printf("%2147483647s\n", s);	// 4294967295
@@ -54,5 +56,17 @@ void	bonus()
 	tmp = ft_printf("%10c\n", c);			//          t
 	printf("%d\n", tmp);					// 10 + 1
 	tmp = ft_printf("%-10c%c\n", c, c);		// t         t
-	printf("%d\n", tmp);					// 12
+	printf("%d\n", tmp);					// 11 + 1
+	tmp = ft_printf("%10d\n", year);		//         26
+	printf("%d\n", tmp);					// 10 + 1
+	tmp =ft_printf("%-10d歳\n", year);		// 26        歳
+	printf("%d\n", tmp);					// 13 + 1
+	tmp = ft_printf("%+010d\n", year);		// +000000026
+	printf("%d\n", tmp);					// 10 + 1
+	tmp = ft_printf("%- 10d\n", year);		//  26
+	printf("%d\n", tmp);					// 10 + 1
+	puts("=================");
+	tmp = printf("%- 10d\n", year);			//  26
+	printf("%d\n", tmp);					// 10 + 1
+
 }

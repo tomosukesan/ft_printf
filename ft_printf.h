@@ -42,15 +42,18 @@ int		ft_chr_print(const char **argv, va_list ap, t_flags flag);
 int		ft_putchar_fd(char c, int fd);
 int		ft_str_print(const char **argv, va_list ap, t_flags flag);
 int		ft_putstr_fd(char *s, int fd);
-int		ft_nbr_print(const char **argv, va_list ap);
+int		ft_nbr_print(const char **argv, va_list ap, t_flags flag);
 int		ft_putnbr_fd(int n, int fd, int digit);
-int		ft_decimal_print(const char **argv, va_list ap);
-int		ft_low_hex_print(const char **argv, va_list ap);
-int		ft_up_hex_print(const char **argv, va_list ap);
+int		ft_decimal_print(const char **argv, va_list ap, t_flags flag);
+int		ft_handle_hex(const char **argv, va_list ap, char *rule, t_flags flag);
 int		ft_hex_print(unsigned int num, char *rule, int digit);
 int		ft_address_print(const char **argv, va_list ap);
 int		ft_strlen(const char *str);
 int		ft_cal_width(const char **argv);
+int		ft_cal_digit(long long num);
+int		ft_cal_hex_digit(unsigned int num, int digit);
 void	ft_check_minus_zero(const char **argv, t_flags *flag);
+void	ft_check_space_plus(const char **argv, t_flags *flag);
+void	ft_check_sharp(const char **argv, t_flags *flag);
 
 #endif

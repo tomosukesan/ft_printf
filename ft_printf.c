@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/26 19:26:38 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/11/27 13:46:45 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-#include <stdio.h>
 
 static int	judge_detail(const char **argv, va_list ap);
 static void	*ft_memset(void *buf, int ch, size_t n);
@@ -47,12 +45,19 @@ int	ft_printf(const char *argv, ...)
 
 static int	judge_detail(const char **argv, va_list ap)
 {
-	t_flags	flag;		//printf("%10c\n", c)
+	t_flags	flag;		//printf("%- 10d\n", year)
 
 	ft_memset(&flag, 0, 8);
 	if (**argv == '-' || **argv == '0')
 		ft_check_minus_zero(argv, &flag);
-	if ('0' <= **argv && **argv <= '9')
+	if (**argv == ' ' || **argv == '+')
+	{
+		ft_check_space_plus(argv, &flag);
+		ft_check_minus_zero(argv, &flag);
+	}
+	else if (**argv == '#')
+		ft_check_sharp(argv, &flag);
+	if ('1' <= **argv && **argv <= '9')
 		flag.width = ft_cal_width(argv);
 	return (judge_format(argv, ap, flag));
 }
@@ -84,13 +89,13 @@ static int	judge_format(const char **argv, va_list ap, t_flags flag)
 	else if (**argv == 'p')
 		result = ft_address_print(argv, ap);
 	else if (**argv == 'd' || **argv == 'i')
-		result = ft_nbr_print(argv, ap);
+		result = ft_nbr_print(argv, ap, flag);
 	else if (**argv == 'u')
-		result = ft_decimal_print(argv, ap);
+		result = ft_decimal_print(argv, ap, flag);
 	else if (**argv == 'x')
-		result = ft_low_hex_print(argv, ap);
+		result = ft_handle_hex(argv, ap, LOWERCASE_HEX, flag);
 	else if (**argv == 'X')
-		result = ft_up_hex_print(argv, ap);
+		result = ft_handle_hex(argv, ap, UPPERCASE_HEX, flag);
 	else if (**argv == '%')
 		result = ft_putchar_fd('%', 1);
 	return (result);

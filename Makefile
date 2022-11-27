@@ -10,11 +10,11 @@ SRCS = ft_printf.c \
 	ft_str_print.c \
 	ft_nbr_print.c \
 	ft_decimal_print.c \
-	ft_low_hex_print.c \
-	ft_up_hex_print.c \
+	ft_handle_hex.c \
 	ft_hex_print.c \
 	ft_address_print.c \
-	ft_check_flag.c
+	ft_check_flag.c \
+	ft_cal_digit.c
 OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)
