@@ -1,24 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_print.c                                     :+:      :+:    :+:   */
+/*   ft_chr_print_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 15:01:41 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 12:07:33 by ttachi           ###   ########.fr       */
+/*   Created: 2022/11/02 14:38:40 by ttachi            #+#    #+#             */
+/*   Updated: 2022/12/08 14:56:25 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-int	ft_str_print(const char **argv, va_list ap)
+int	ft_chr_print_bonus(const char **argv, va_list ap, t_flags flag)
 {
-	char	*s;
+	char	c;
 	int		result;
 
-	s = va_arg(ap, char *);
-	result = ft_putstr_fd(s, 1);
+	c = va_arg(ap, int);
+	if (flag.width <= 1)
+	{
+		ft_putchar_fd(c, 1);
+		return (1);
+	}
+	result = flag.width;
+	if (flag.minus)
+	{
+		ft_putchar_fd(c, 1);
+		while (--flag.width)
+			ft_putchar_fd(' ', 1);
+	}
+	else
+	{
+		while (--flag.width)
+			ft_putchar_fd(' ', 1);
+		ft_putchar_fd(c, 1);
+	}
 	argv++;
 	return (result);
 }

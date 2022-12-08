@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nbr_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/02 17:12:58 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/08 12:07:18 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_nbr_print(const char **argv, va_list ap)
 {

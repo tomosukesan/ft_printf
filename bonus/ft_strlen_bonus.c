@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_process_detail.c                                :+:      :+:    :+:   */
+/*   ft_strlen_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 08:59:09 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/24 14:56:47 by ttachi           ###   ########.fr       */
+/*   Created: 2022/11/26 16:17:12 by ttachi            #+#    #+#             */
+/*   Updated: 2022/12/08 14:45:27 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libftprintf.h"
+#include "ft_printf_bonus.h"
 
-// int	ft_process_detail(const char **argv, va_list ap)
-// {
-// 	int	result;
+int	ft_strlen_bonus(const char *str)
+{
+	int	len;
 
-// 	result = 0;
-// 	// ここから条件分岐
-// }
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
+}

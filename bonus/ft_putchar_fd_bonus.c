@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_print.c                                     :+:      :+:    :+:   */
+/*   ft_putchar_fd_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 15:01:41 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 12:07:33 by ttachi           ###   ########.fr       */
+/*   Created: 2022/10/12 20:03:13 by ttachi            #+#    #+#             */
+/*   Updated: 2022/12/08 14:56:56 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-int	ft_str_print(const char **argv, va_list ap)
+int	ft_putchar_fd(char c, int fd)
 {
-	char	*s;
-	int		result;
-
-	s = va_arg(ap, char *);
-	result = ft_putstr_fd(s, 1);
-	argv++;
-	return (result);
+	write(fd, &c, 1);
+	return (1);
 }

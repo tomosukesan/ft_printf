@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_decimal_print.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:02:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/24 17:31:25 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/08 12:07:09 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	ft_put_plusnbr_fd(unsigned int n, int fd, int digit);
 

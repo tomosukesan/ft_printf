@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_print.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_fd_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 15:01:41 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 12:07:33 by ttachi           ###   ########.fr       */
+/*   Created: 2022/10/14 19:11:22 by ttachi            #+#    #+#             */
+/*   Updated: 2022/12/08 20:45:38 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-int	ft_str_print(const char **argv, va_list ap)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*s;
-	int		result;
+	long long	devisor;
+	long long	tmp;
 
-	s = va_arg(ap, char *);
-	result = ft_putstr_fd(s, 1);
-	argv++;
-	return (result);
+	devisor = 1;
+	tmp = (long long)n;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		tmp *= -1;
+	}
+	while (n <= -10 || n >= 10)
+	{
+		devisor *= 10;
+		n /= 10;
+	}
+	while (devisor)
+	{
+		ft_putchar_fd((tmp / devisor) + '0', fd);
+		tmp %= devisor;
+		devisor /= 10;
+	}
 }

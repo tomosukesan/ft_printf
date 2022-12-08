@@ -13,18 +13,40 @@ SRCS = ft_printf.c \
 	ft_up_hex_print.c \
 	ft_hex_print.c \
 	ft_address_print.c
+SRCS_BONUS = ./bonus/ft_printf_bonus.c \
+	./bonus/ft_address_print_bonus.c \
+	./bonus/ft_chr_print_bonus.c \
+	./bonus/ft_decimal_print_bonus.c \
+	./bonus/ft_hex_print_bonus.c \
+	./bonus/ft_hex_flag_bonus.c \
+	./bonus/ft_nbr_print_bonus.c \
+	./bonus/ft_nbr_flag_bonus.c \
+	./bonus/ft_putchar_fd_bonus.c \
+	./bonus/ft_putnbr_fd_bonus.c \
+	./bonus/ft_putstr_fd_bonus.c \
+	./bonus/ft_str_print_bonus.c \
+	./bonus/ft_strlen_bonus.c \
+	./bonus/ft_cal_digit_bonus.c \
+	./bonus/ft_check_flag_bonus.c
+
 OBJS = $(SRCS:%.c=%.o)
+OBJS_BONUS = $(SRCS_BONUS:%.c=%.o)
+ifdef WITH_BONUS
+OBJS = $(OBJS_BONUS)
+endif
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar r $(NAME) $(OBJS)
 
+bonus:
+	@make WITH_BONUS=1
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJS_BONUS)
 fclean: clean
 	$(RM) $(NAME)
 
 re: clean fclean all
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all re bonus
