@@ -13,8 +13,15 @@ SRCS = ft_printf.c \
 	ft_handle_hex.c \
 	ft_hex_print.c \
 	ft_address_print.c
-SRCS_BONUS = ft_cal_digit_bonus.c \
-	ft_check_flag_bonus.c
+SRCS_BONUS = ft_printf_bonus.c \
+	ft_cal_digit_bonus.c \
+	ft_check_flag_bonus.c \
+	ft_decimal_print_bonus.c \
+	ft_hex_print_bonus.c \
+	ft_nbr_print_bonus.c \
+	ft_nbr_put_flags_bonus.c \
+	ft_address_bonus.c \
+	ft_str_bonus.c
 
 OBJS = $(SRCS:%.c=%.o)
 OBJS_BONUS = $(SRCS_BONUS:%.c=%.o)

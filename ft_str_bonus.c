@@ -1,48 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cal_digit_bonus.c                               :+:      :+:    :+:   */
+/*   ft_str_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/27 10:03:19 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/07 21:00:28 by ttachi           ###   ########.fr       */
+/*   Created: 2022/12/07 21:14:45 by ttachi            #+#    #+#             */
+/*   Updated: 2022/12/07 21:16:26 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_cal_abs_digit(long long num)
+int	ft_str_write_in_width(char *s, int s_len, t_flags flag)
 {
-	int					digit;
-	unsigned long long	abs_num;
+	int	ret_val;
 
-	digit = 0;
-	if (num < 0)
-		abs_num = num * -1;
+	ret_val = flag.width;
+	flag.width -= s_len;
+	if (flag.minus)
+	{
+		write(1, s, s_len);
+		while (flag.width--)
+			ft_putchar_fd(' ', 1);
+	}
 	else
-		abs_num = num;
-	if (abs_num == 0)
-		digit++;
-	while (abs_num != 0)
 	{
-		digit++;
-		abs_num /= 10;
+		while (flag.width--)
+			ft_putchar_fd(' ', 1);
+		write(1, s, s_len);
 	}
-	return (digit);
-}
-
-int	ft_cal_hex_digit(unsigned long num)
-{
-	int					digit;
-
-	digit = 0;
-	if (num == 0)
-		digit++;
-	while (num != 0)
-	{
-		digit++;
-		num /= 16;
-	}
-	return (digit);
+	return (ret_val);
 }

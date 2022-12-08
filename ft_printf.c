@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/27 16:10:03 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/07 21:29:34 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 static int	judge_detail(const char **argv, va_list ap);
 static void	*ft_memset(void *buf, int ch, size_t n);
@@ -20,18 +21,20 @@ int	ft_printf(const char *argv, ...)
 {
 	va_list	ap;
 	int		result;
+	int		ret_val;
 
 	result = 0;
 	va_start(ap, argv);
 	while (*argv != '\0')
 	{
+		ret_val = 1;
 		if (*argv == '%')
 		{
 			argv++;
-			result += judge_detail(&argv, ap);		// 失敗の処理を追加
-			// result += judge_format(&argv, ap);
-			if (result < 0)
+			ret_val = judge_detail(&argv, ap);
+			if (ret_val < 0)
 				return (-1);
+			result += ret_val;
 			argv++;
 		}
 		else
@@ -45,28 +48,16 @@ int	ft_printf(const char *argv, ...)
 	return (result);
 }
 
-static int	judge_detail(const char **argv, va_list ap)
+int	judge_detail(const char **argv, va_list ap)
 {
 	t_flags	flag;
 
-	ft_memset(&flag, 0, 8);
-	if (**argv == '-' || **argv == '0')
-		ft_check_minus_zero(argv, &flag);
-	if (**argv == ' ' || **argv == '+')
-	{
-		ft_check_space_plus(argv, &flag);
-		ft_check_minus_zero(argv, &flag);
-	}
-	else if (**argv == '#')
-		ft_check_sharp(argv, &flag);
-	if ('1' <= **argv && **argv <= '9')
-		flag.width = ft_cal_width(argv);
-	if (flag.width == -1)
-		return (INT_MIN);	// とりあえずINTMINを返して負の数にしている
+	ft_memset(&flag, 0, sizeof(t_flags));
+	ft_printf_bonus(argv, &flag);
 	return (judge_format(argv, ap, flag));
 }
 
-static void	*ft_memset(void *buf, int ch, size_t n)
+void	*ft_memset(void *buf, int ch, size_t n)
 {
 	size_t			count;
 	unsigned char	*uc_buf;

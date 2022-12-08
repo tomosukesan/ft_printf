@@ -45,15 +45,14 @@ int		ft_putstr_fd(char *s, int fd);
 int		ft_nbr_print(const char **argv, va_list ap, t_flags flag);
 int		ft_putnbr_fd(int n, int fd, int digit);
 int		ft_decimal_print(const char **argv, va_list ap, t_flags flag);
+void	ft_put_uinbr_fd(unsigned int n, int fd, int digit);
 int		ft_handle_hex(const char **argv, va_list ap, char *rule, t_flags flag);
-int		ft_hex_print(unsigned int num, char *rule, int digit);
+int		ft_hex_process_prefix(char *rule);
+void	ft_hex_print(unsigned int num, char *rule);
 int		ft_address_print(const char **argv, va_list ap, t_flags flag);
+int		ft_put_address(uintptr_t num, char *rule, int digit);
 int		ft_strlen(const char *str);
-int		ft_cal_width(const char **argv);
-int		ft_cal_digit(long long num);
-int		ft_cal_hex_digit(unsigned long num, int digit);
-void	ft_check_minus_zero(const char **argv, t_flags *flag);
-void	ft_check_space_plus(const char **argv, t_flags *flag);
-void	ft_check_sharp(const char **argv, t_flags *flag);
+int		ft_cal_abs_digit(long long num);
+int		ft_cal_hex_digit(unsigned long num);
 
 #endif

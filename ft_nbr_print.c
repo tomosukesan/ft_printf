@@ -3,100 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nbr_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/27 17:25:21 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/07 21:41:26 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void	adapt_flags_with_minus(int num, int digit, t_flags flag);
-static void	adapt_flags(int num, int digit, t_flags flag);
+#include "ft_printf_bonus.h"
 
 int	ft_nbr_print(const char **argv, va_list ap, t_flags flag)
 {
-	int		num;
-	int		digit;
-	int		result;
+	int	num;
+	int	abs_digit;
+	int	minus;
+	int	result;
 
 	num = va_arg(ap, int);
-	digit = ft_cal_digit(num);
-	result = 0;
-	if (digit >= flag.width)
+	abs_digit = ft_cal_abs_digit(num);
+	minus = FALSE;
+	if (num < 0)
+		minus = TRUE;
+	result = flag.width;
+	if (flag.precision > abs_digit)
 	{
-		result = digit;
-		if (flag.space && num >= 0)
-		{
-			ft_putchar_fd(' ', 1);
-			result++;
-		}
-		else if (flag.plus && num >= 0)
-		{
-			ft_putchar_fd('+', 1);
-			result++;
-		}
-		ft_putnbr_fd(num, 1, digit);
+		flag.zero = TRUE;
+		if (flag.precision > flag.width)
+			result = flag.precision + minus;
 	}
-	else if (digit < flag.width)
-	{
-		result = flag.width;
-		flag.width -= digit;
-		if (flag.minus)
-			adapt_flags_with_minus(num, digit, flag);
-		else
-			adapt_flags(num, digit, flag);
-	}
+	if (abs_digit + minus >= result)
+		result = abs_digit + minus + \
+					ft_adapt_space_plus(flag, num, abs_digit, minus);
+	else if (abs_digit + minus < result)
+		ft_nbr_flags(flag, num, abs_digit, result);
 	argv++;
 	return (result);
-}
-
-static void	adapt_flags_with_minus(int num, int digit, t_flags flag)
-{
-	if (flag.space && num >= 0)
-	{
-		ft_putchar_fd(' ', 1);
-		flag.width--;
-	}
-	else if (flag.plus && num >= 0)
-	{
-		ft_putchar_fd('+', 1);
-		flag.width--;
-	}
-	ft_putnbr_fd(num, 1, digit);
-	while (flag.width--)
-		ft_putchar_fd(' ', 1);
-}
-
-static void	adapt_flags(int num, int digit, t_flags flag)
-{
-	char	c;
-
-	c = ' ';
-	if (flag.space && num >= 0)
-	{
-		ft_putchar_fd(' ', 1);
-		flag.width--;
-	}
-	else if (flag.plus && num >= 0)
-	{
-		ft_putchar_fd('+', 1);
-		flag.width--;
-	}
-	if (flag.zero)
-		c = '0';
-	if (num < 0)
-	{
-		ft_putchar_fd('-', 1);
-		while (flag.width--)
-			ft_putchar_fd(c, 1);
-		ft_putnbr_fd(num * -1, 1, digit);
-	}
-	else
-	{
-		while (flag.width--)
-			ft_putchar_fd(c, 1);
-		ft_putnbr_fd(num, 1, digit);
-	}
 }

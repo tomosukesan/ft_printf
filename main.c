@@ -66,7 +66,7 @@ void	bonus()
 	tmp = ft_printf("%- 10d\n", year);		//  26
 	printf("%d\n", tmp);					// 10 + 1
 	puts("=================");
-	tmp = printf("%- 10d\n", year);			//  26
-	printf("%d\n", tmp);					// 10 + 1
+	tmp = ft_printf("%5.3s\n", "42tokyo");			//   42t
+	printf("%d\n", tmp);		// 6
 
 }

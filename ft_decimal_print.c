@@ -6,54 +6,42 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:02:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/27 10:18:06 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/07 21:02:21 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-static int	ft_put_uinbr_fd(unsigned int n, int fd, int digit);
+void	ft_put_uinbr_fd(unsigned int n, int fd, int digit);
 
 int	ft_decimal_print(const char **argv, va_list ap, t_flags flag)
 {
 	unsigned int	num;
 	int				digit;
 	int				result;
-	char			c;
 
 	num = va_arg(ap, unsigned int);
-	digit = ft_cal_digit(num);
-	result = 0;
-	c = ' ';
-	if (digit >= flag.width)
+	digit = ft_cal_abs_digit(num);
+	result = flag.width;
+	if (flag.precision > digit)
+	{
+		flag.zero = TRUE;
+		if (flag.precision > flag.width)
+			result = flag.precision;
+	}
+	if (digit >= result)
 	{
 		result = digit;
 		ft_put_uinbr_fd(num, 1, digit);
 	}
-	else if (digit < flag.width)
-	{
-		result = flag.width;
-		flag.width -= digit;
-		if (flag.minus)
-		{
-			ft_put_uinbr_fd(num, 1, digit);
-			while (flag.width--)
-				ft_putchar_fd(' ', 1);
-		}
-		else
-		{
-			if (flag.zero)
-				c = '0';
-			while (flag.width--)
-				ft_putchar_fd(c, 1);
-			ft_put_uinbr_fd(num, 1, digit);
-		}
-	}
+	else if (digit < result)
+		ft_decimal_flags(num, digit, flag, result);
 	argv++;
 	return (result);
 }
 
-static int	ft_put_uinbr_fd(unsigned int n, int fd, int digit)
+void	ft_put_uinbr_fd(unsigned int n, int fd, int digit)
 {
 	long long	devisor;
 	long long	tmp;
@@ -72,5 +60,4 @@ static int	ft_put_uinbr_fd(unsigned int n, int fd, int digit)
 		tmp %= devisor;
 		devisor /= 10;
 	}
-	return (digit);
 }

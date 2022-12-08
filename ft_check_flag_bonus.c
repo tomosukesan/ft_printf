@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_flag_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 18:03:38 by ttachi            #+#    #+#             */
-/*   Updated: 2022/11/27 16:00:17 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/07 21:01:07 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 void	ft_check_minus_zero(const char **argv, t_flags *flag)
 {
@@ -52,6 +53,7 @@ int	ft_cal_width(const char **argv)
 {
 	int	result;
 
+	result = 0;
 	while ('0' <= **argv && **argv <= '9')
 	{
 		if (result >= (INT_MAX - (**argv - '0')) / 10)
@@ -60,4 +62,21 @@ int	ft_cal_width(const char **argv)
 		(*argv)++;
 	}
 	return (result);
+}
+
+void	ft_check_dot_precision(const char **argv, t_flags *flag)
+{
+	int	result;
+
+	flag->dot = TRUE;
+	(*argv)++;
+	result = 0;
+	while ('0' <= **argv && **argv <= '9')
+	{
+		if (result >= (INT_MAX - (**argv - '0')) / 10)
+			return ;
+		result = result * 10 + (**argv - '0');
+		(*argv)++;
+	}
+	flag->precision = result;
 }
