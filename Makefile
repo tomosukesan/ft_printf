@@ -35,10 +35,17 @@ ifdef WITH_BONUS
 OBJS = $(OBJS_BONUS)
 endif
 
-all: $(NAME)
+all: preprocess $(NAME)
 
 $(NAME): $(OBJS)
 	ar r $(NAME) $(OBJS)
+
+preprocess:
+ifdef WITH_BONUS
+	@if find . -name $(NAME) && nm -u $(NAME) | grep ft_printf.o; then $(RM) $(NAME); fi;
+else
+	@if find . -name $(NAME) && nm -u $(NAME) | grep bonus; then $(RM) $(NAME); fi;
+endif
 
 bonus:
 	@make WITH_BONUS=1
@@ -49,4 +56,4 @@ fclean: clean
 
 re: clean fclean all
 
-.PHONY: clean fclean all re bonus
+.PHONY: clean fclean all re bonus preprocess
