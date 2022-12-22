@@ -6,11 +6,13 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:52:38 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 20:24:27 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/19 20:49:49 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+
+static int	hex_left_align(unsigned int x, int digit, t_flags flag, char *rule);
 
 void	ft_hex_print(unsigned int num, char *rule)
 {
@@ -47,15 +49,23 @@ int	ft_hex_process(const char **argv, va_list ap, char *rule, t_flags flag)
 		if (flag.precision > flag.width)
 			result = flag.precision;
 	}
+	else if (flag.dot && flag.precision <= digit)
+		flag.zero = FALSE;
 	if (digit >= result)
-	{
-		result = digit;
-		if (flag.sharp && x != 0)
-			result = result + ft_hex_print_prefix(rule) + 2;
-		ft_hex_print(x, rule);
-	}
+		result = hex_left_align(x, digit, flag, rule);
 	else if (digit < result)
-		ft_hex_flags((unsigned int)x, result, flag, rule);
+		ft_hex_flags(x, result, flag, rule);
 	argv++;
+	return (result);
+}
+
+static int	hex_left_align(unsigned int x, int digit, t_flags flag, char *rule)
+{
+	int	result;
+
+	result = digit;
+	if (flag.sharp && x != 0)
+		result = result + ft_hex_print_prefix(rule) + 2;
+	ft_hex_print(x, rule);
 	return (result);
 }

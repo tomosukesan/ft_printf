@@ -1,16 +1,25 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/12/22 10:33:04 by ttachi            #+#    #+#              #
+#    Updated: 2022/12/22 12:03:42 by ttachi           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME =  libftprintf.a
 SRCS = ft_printf.c \
 	ft_putchar_fd.c \
-	ft_putnbr_fd.c \
 	ft_putstr_fd.c \
 	ft_chr_print.c \
 	ft_str_print.c \
 	ft_nbr_print.c \
 	ft_decimal_print.c \
-	ft_low_hex_print.c \
-	ft_up_hex_print.c \
 	ft_hex_print.c \
 	ft_address_print.c
 SRCS_BONUS = ./bonus/ft_printf_bonus.c \
@@ -32,7 +41,7 @@ SRCS_BONUS = ./bonus/ft_printf_bonus.c \
 OBJS = $(SRCS:%.c=%.o)
 OBJS_BONUS = $(SRCS_BONUS:%.c=%.o)
 ifdef WITH_BONUS
-OBJS = $(OBJS_BONUS)
+	OBJS = $(OBJS_BONUS)
 endif
 
 all: preprocess $(NAME)
@@ -54,6 +63,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: clean fclean all
+re: fclean all
 
 .PHONY: clean fclean all re bonus preprocess

@@ -7,8 +7,19 @@ int	main(void)
 	char s[] = "tachi";
 	int	year = 26;
 	int	result;
-	int	tmp;
+	int	tmp = 0;
 
+	char	max[INT_MAX];
+	int		i = 0;
+
+	while (i < 10)
+	{
+		max[i] = 'a';
+		i++;
+	}
+	tmp = printf("%s\n", max);
+	printf("%d\n", tmp);
+/*
 	result = ft_printf("My name is %c%s.\nI'm %d.\n", c, s, year);
 	printf("%d\n", result);
 	// result = printf("My name is %c%s.\nI'm %d.\n", c, s, year);
@@ -32,6 +43,6 @@ int	main(void)
 	printf("%d\n", tmp);			// 6 + 1
 	tmp = ft_printf("%u\n", -1);	// 4294967295
 	printf("%d\n", tmp);			// 10 + 1
-
+*/
 	return (0);
 }

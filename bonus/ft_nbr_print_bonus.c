@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 20:49:08 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/19 22:47:47 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ int	ft_nbr_print_bonus(const char **argv, va_list ap, t_flags flag)
 	{
 		flag.zero = TRUE;
 		if (flag.precision > flag.width)
-			result = flag.precision + minus;
+			result = flag.precision + (minus || flag.plus || flag.sharp);
 	}
+	else if (flag.dot && flag.precision <= abs_digit)
+		flag.zero = FALSE;
 	if (abs_digit + minus >= result)
-		result = abs_digit + minus + \
-					ft_put_space_plus_num(flag, num);
+		result = abs_digit + minus + ft_put_space_plus_num(flag, num);
 	else if (abs_digit + minus < result)
 		ft_nbr_flags(flag, num, abs_digit, result);
 	argv++;

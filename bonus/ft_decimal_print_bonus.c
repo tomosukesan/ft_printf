@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:02:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 14:58:20 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/11 22:00:28 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_decimal_print_bonus(const char **argv, va_list ap, t_flags flag)
 		if (flag.precision > flag.width)
 			result = flag.precision;
 	}
+	else if (flag.dot && flag.precision <= digit)
+		flag.zero = FALSE;
 	if (digit >= result)
 	{
 		result = digit;
@@ -71,6 +73,8 @@ static void	ft_blank_handle(unsigned int n, int e_cnt, int z_cnt, t_flags flag)
 	digit = ft_cal_abs_digit(n);
 	if (flag.minus)
 	{
+		while (flag.zero && z_cnt-- > 0)
+			ft_putchar_fd('0', 1);
 		ft_put_uinbr_fd(n, 1, digit);
 		while (e_cnt-- > 0)
 			ft_putchar_fd(' ', 1);

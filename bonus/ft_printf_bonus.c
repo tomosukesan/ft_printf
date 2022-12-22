@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 21:04:13 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/11 21:00:27 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	judge_detail(const char **argv, va_list ap);
 static void	*ft_memset(void *buf, int ch, size_t n);
+static char	*ft_strchr(const char *s, int c);
 static int	judge_format(const char **argv, va_list ap, t_flags flag);
 
 int	ft_printf(const char *argv, ...)
@@ -48,15 +49,15 @@ static int	judge_detail(const char **argv, va_list ap)
 	t_flags	flag;
 
 	ft_memset(&flag, 0, sizeof(t_flags));
-	if (**argv == '-' || **argv == '0')
-		ft_check_minus_zero(argv, &flag);
-	if (**argv == ' ' || **argv == '+')
+	while (ft_strchr("-0 +#", **argv))
 	{
-		ft_check_space_plus(argv, &flag);
-		ft_check_minus_zero(argv, &flag);
+		if (**argv == '-' || **argv == '0')
+			ft_check_minus_zero(argv, &flag);
+		if (**argv == ' ' || **argv == '+')
+			ft_check_space_plus(argv, &flag);
+		else if (**argv == '#')
+			ft_check_sharp(argv, &flag);
 	}
-	else if (**argv == '#')
-		ft_check_sharp(argv, &flag);
 	if ('0' <= **argv && **argv <= '9')
 		flag.width = ft_cal_width(argv);
 	if (flag.width == -1)
@@ -79,6 +80,20 @@ static void	*ft_memset(void *buf, int ch, size_t n)
 		count++;
 	}
 	return ((void *)uc_buf);
+}
+
+static char	*ft_strchr(const char *s, int c)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (NULL);
 }
 
 static int	judge_format(const char **argv, va_list ap, t_flags flag)
