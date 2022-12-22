@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_flag_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 18:03:38 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 20:20:01 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/22 14:51:51 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_check_minus_zero(const char **argv, t_flags *flag)
 		flag->zero = TRUE;
 		(*argv)++;
 	}
-	while (**argv == '-' || **argv == '0')
-		(*argv)++;
+	if (flag->minus && flag->zero)
+		flag->zero = FALSE;
 }
 
 void	ft_check_space_plus(const char **argv, t_flags *flag)
@@ -35,8 +35,8 @@ void	ft_check_space_plus(const char **argv, t_flags *flag)
 	else if (**argv == '+')
 		flag->plus = TRUE;
 	(*argv)++;
-	while (**argv == ' ' || **argv == '+')
-		(*argv)++;
+	if (flag->space && flag->plus)
+		flag->space = FALSE;
 }
 
 void	ft_check_sharp(const char **argv, t_flags *flag)
@@ -63,7 +63,7 @@ int	ft_cal_width(const char **argv)
 	return ((int)result);
 }
 
-void	ft_check_dot_precision(const char **argv, t_flags *flag)
+int	ft_cal_precision(const char **argv, t_flags *flag)
 {
 	int	result;
 
@@ -73,9 +73,9 @@ void	ft_check_dot_precision(const char **argv, t_flags *flag)
 	while ('0' <= **argv && **argv <= '9')
 	{
 		if (result >= (INT_MAX - (**argv - '0')) / 10)
-			return ;
+			return (-1);
 		result = result * 10 + (**argv - '0');
 		(*argv)++;
 	}
-	flag->precision = result;
+	return (result);
 }

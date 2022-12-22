@@ -3,29 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_address_print_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 05:53:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 14:55:55 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/22 15:20:16 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static void	ft_address_blank_handle(t_flags flag, uintptr_t	p, int digit);
-
-int	ft_put_address(uintptr_t num, char *rule, int digit)
-{
-	if (num < 16)
-	{
-		ft_putchar_fd(rule[num % 16], 1);
-		return (++digit);
-	}
-	digit++;
-	digit = ft_put_address(num / 16, rule, digit);
-	ft_putchar_fd(rule[num % 16], 1);
-	return (digit);
-}
+static int	ft_put_address(uintptr_t num, char *rule, int digit);
+static void	ft_address_adapt_width(t_flags flag, uintptr_t	p, int digit);
 
 int	ft_address_print_bonus(const char **argv, va_list ap, t_flags flag)
 {
@@ -47,24 +35,37 @@ int	ft_address_print_bonus(const char **argv, va_list ap, t_flags flag)
 	{
 		result = flag.width;
 		flag.width -= digit;
-		ft_address_blank_handle(flag, p, digit);
+		ft_address_adapt_width(flag, p, digit);
 	}
 	argv++;
 	return (result + 2);
 }
 
-static void	ft_address_blank_handle(t_flags flag, uintptr_t	p, int digit)
+static int	ft_put_address(uintptr_t num, char *rule, int digit)
+{
+	if (num < 16)
+	{
+		ft_putchar_fd(rule[num % 16], 1);
+		return (++digit);
+	}
+	digit++;
+	digit = ft_put_address(num / 16, rule, digit);
+	ft_putchar_fd(rule[num % 16], 1);
+	return (digit);
+}
+
+static void	ft_address_adapt_width(t_flags flag, uintptr_t	p, int digit)
 {
 	if (flag.minus)
 	{
 		ft_putstr_fd("0x", 1);
 		ft_put_address(p, LOWERCASE_HEX, digit);
-		while (flag.width--)
+		while (flag.width-- > 0)
 			ft_putchar_fd(' ', 1);
 	}
 	else
 	{
-		while (flag.width--)
+		while (flag.width-- > 0)
 			ft_putchar_fd(' ', 1);
 		ft_putstr_fd("0x", 1);
 		ft_put_address(p, LOWERCASE_HEX, digit);

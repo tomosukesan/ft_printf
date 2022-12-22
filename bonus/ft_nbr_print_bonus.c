@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nbr_print_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/19 22:47:47 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/22 15:51:23 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_nbr_print_bonus(const char **argv, va_list ap, t_flags flag)
 	int	result;
 
 	num = va_arg(ap, int);
-	abs_digit = ft_cal_abs_digit(num);
+	abs_digit = ft_cal_abs_digit((long long)num);
 	minus = FALSE;
 	if (num < 0)
 		minus = TRUE;
@@ -48,14 +48,14 @@ static int	ft_put_space_plus_num(t_flags flag, int num)
 	int	result;
 
 	result = 0;
-	if (flag.space && num >= 0)
-	{
-		ft_putchar_fd(' ', 1);
-		result++;
-	}
-	else if (flag.plus && num >= 0)
+	if (flag.plus && num >= 0)
 	{
 		ft_putchar_fd('+', 1);
+		result++;
+	}
+	else if (flag.space && num >= 0)
+	{
+		ft_putchar_fd(' ', 1);
 		result++;
 	}
 	ft_putnbr_fd(num, 1);
@@ -64,10 +64,10 @@ static int	ft_put_space_plus_num(t_flags flag, int num)
 
 void	ft_nbr_put_flags(t_flags flag, int n, int z_cnt)
 {
-	if (flag.space && n >= 0)
-		ft_putchar_fd(' ', 1);
-	else if (flag.plus && n >= 0)
+	if (flag.plus && n >= 0)
 		ft_putchar_fd('+', 1);
+	else if (flag.space && n >= 0)
+		ft_putchar_fd(' ', 1);
 	else if (n < 0)
 		ft_putchar_fd('-', 1);
 	if (flag.zero)

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int main (void)
 {
@@ -80,9 +80,10 @@ int main (void)
 	ft_printf("ft_printf:%10.8X\n", d);
 	ft_printf("ft_printf:%10.8p\n", &d);
 
+	int tmp1, tmp2;
 	puts("\n[%3.8d]");
 	   printf("printf   :%3.8c\n", c);		// undefined
-	   printf("printf   :%3.8s\n", s);
+	tmp1 =   printf("printf   :%3.8s\n", s);
 	   printf("printf   :%3.8d\n", d);
 	   printf("printf   :%3.8d\n", m);
 	   printf("printf   :%3.8u\n", d);
@@ -90,13 +91,14 @@ int main (void)
 	   printf("printf   :%3.8X\n", d);
 	   printf("printf   :%3.8p\n", &d);	// undefined
 	ft_printf("ft_printf:%3.8c\n", c);
-	ft_printf("ft_printf:%3.8s\n", s);
+	tmp2 = ft_printf("ft_printf:%3.8s\n", s);
 	ft_printf("ft_printf:%3.8d\n", d);
 	ft_printf("ft_printf:%3.8d\n", m);
 	ft_printf("ft_printf:%3.8u\n", d);
 	ft_printf("ft_printf:%3.8x\n", d);
 	ft_printf("ft_printf:%3.8X\n", d);
 	ft_printf("ft_printf:%3.8p\n", &d);
+	printf("%d, %d", tmp1, tmp2);
 
 	puts("\n[%3.2d]");
 	   printf("printf   :%3.2c\n", c);		// undefined

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chr_print_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:38:40 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 14:56:25 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/22 14:30:52 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	ft_chr_print_bonus(const char **argv, va_list ap, t_flags flag)
 	if (flag.minus)
 	{
 		ft_putchar_fd(c, 1);
-		while (--flag.width)
+		while (--flag.width > 0)
 			ft_putchar_fd(' ', 1);
 	}
 	else
 	{
-		while (--flag.width)
+		while (--flag.width > 0)
 			ft_putchar_fd(' ', 1);
 		ft_putchar_fd(c, 1);
 	}

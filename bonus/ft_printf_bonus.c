@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/11 21:00:27 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/22 14:51:46 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ static int	judge_detail(const char **argv, va_list ap)
 	}
 	if ('0' <= **argv && **argv <= '9')
 		flag.width = ft_cal_width(argv);
-	if (flag.width == -1)
-		return (-1);
 	if (**argv == '.')
-		ft_check_dot_precision(argv, &flag);
+		flag.precision = ft_cal_precision(argv, &flag);
+	if (flag.width == -1 || flag.precision == -1)
+		return (-1);
 	return (judge_format(argv, ap, flag));
 }
 
