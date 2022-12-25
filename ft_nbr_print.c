@@ -6,27 +6,25 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/22 10:38:01 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/25 19:18:35 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_putnbr_fd(int num, int fd, int digit);
+static int	ft_putnbr_fd(int num, int digit);
 
-int	ft_nbr_print(const char **argv, va_list ap)
+int	ft_nbr_print(va_list ap)
 {
-	int	digit;
 	int	d;
+	int	digit;
 
-	digit = 1;
 	d = va_arg(ap, int);
-	digit = ft_putnbr_fd(d, 1, digit);
-	argv++;
+	digit = ft_putnbr_fd(d, 1);
 	return (digit);
 }
 
-static int	ft_putnbr_fd(int num, int fd, int digit)
+static int	ft_putnbr_fd(int num, int digit)
 {
 	long long	devisor;
 	long long	abs_num;
@@ -35,7 +33,7 @@ static int	ft_putnbr_fd(int num, int fd, int digit)
 	abs_num = (long long)num;
 	if (num < 0)
 	{
-		ft_putchar_fd('-', fd);
+		ft_putchar_fd('-', 1);
 		abs_num *= -1;
 		digit++;
 	}
@@ -47,7 +45,7 @@ static int	ft_putnbr_fd(int num, int fd, int digit)
 	}
 	while (devisor)
 	{
-		ft_putchar_fd((abs_num / devisor) + '0', fd);
+		ft_putchar_fd((abs_num / devisor) + '0', 1);
 		abs_num %= devisor;
 		devisor /= 10;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nbr_print_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/22 15:51:23 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/22 18:13:08 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,4 @@ static int	ft_put_space_plus_num(t_flags flag, int num)
 	}
 	ft_putnbr_fd(num, 1);
 	return (result);
-}
-
-void	ft_nbr_put_flags(t_flags flag, int n, int z_cnt)
-{
-	if (flag.plus && n >= 0)
-		ft_putchar_fd('+', 1);
-	else if (flag.space && n >= 0)
-		ft_putchar_fd(' ', 1);
-	else if (n < 0)
-		ft_putchar_fd('-', 1);
-	if (flag.zero)
-		while (z_cnt-- > 0)
-			ft_putchar_fd('0', 1);
 }

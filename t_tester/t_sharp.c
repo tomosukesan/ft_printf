@@ -7,6 +7,8 @@ int main (void)
 	char	*s = "42tokyo";
 	int		d = 42;
 	int		m = -42;
+	int		tmp1;
+	int		tmp2;
 
 /*
     - zero
@@ -17,54 +19,62 @@ int main (void)
 */
 
 	puts("\n[%#x]");
-	   printf("printf   :%#x\n", d);
+	tmp1 =   printf("printf   :%#x\n", d);
 	   printf("printf   :%#X\n", d);
-	ft_printf("ft_printf:%#x\n", d);
+	tmp2 = ft_printf("ft_printf:%#x\n", d);
 	ft_printf("ft_printf:%#X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#10x]");
-	   printf("printf   :%#10x\n", d);
+	tmp1 =   printf("printf   :%#10x\n", d);
 	   printf("printf   :%#10X\n", d);
-	ft_printf("ft_printf:%#10x\n", d);
+	tmp2 = ft_printf("ft_printf:%#10x\n", d);
 	ft_printf("ft_printf:%#10X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#10.3x]");
-	   printf("printf   :%#10.3x\n", d);
+	tmp1 =   printf("printf   :%#10.3x\n", d);
 	   printf("printf   :%#10.3X\n", d);
-	ft_printf("ft_printf:%#10.3x\n", d);
+	tmp2 = ft_printf("ft_printf:%#10.3x\n", d);
 	ft_printf("ft_printf:%#10.3X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#10.8x]");
-	   printf("printf   :%#10.8x\n", d);
+	tmp1 =   printf("printf   :%#10.8x\n", d);
 	   printf("printf   :%#10.8X\n", d);
-	ft_printf("ft_printf:%#10.8x\n", d);
+	tmp2 = ft_printf("ft_printf:%#10.8x\n", d);
 	ft_printf("ft_printf:%#10.8X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#3.8x]");
-	   printf("printf   :%#3.8x\n", d);
+	tmp1 =   printf("printf   :%#3.8x\n", d);
 	   printf("printf   :%#3.8X\n", d);
-	ft_printf("ft_printf:%#3.8x\n", d);
+	tmp2 = ft_printf("ft_printf:%#3.8x\n", d);
 	ft_printf("ft_printf:%#3.8X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#3.2x]");
-	   printf("printf   :%#3.2x\n", d);
+	tmp1 =    printf("printf   :%#3.2x\n", d);
 	   printf("printf   :%#3.2X\n", d);
-	ft_printf("ft_printf:%#3.2x\n", d);
+	tmp2 = ft_printf("ft_printf:%#3.2x\n", d);
 	ft_printf("ft_printf:%#3.2X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
-	puts("+++++++++++++++++++++++++++");
+	puts("\n+++++++++++++++++++++++++++");
 
 	puts("\n[%#-x]");
-	   printf("printf   :%#-x\n", d);
+	tmp1 =   printf("printf   :%#-x\n", d);
 	   printf("printf   :%#-X\n", d);
-	ft_printf("ft_printf:%#-x\n", d);
+	tmp2 = ft_printf("ft_printf:%#-x\n", d);
 	ft_printf("ft_printf:%#-X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#-10x]");
-	   printf("printf   :%#-10x\n", d);
+	tmp1 =   printf("printf   :%#-10x\n", d);
 	   printf("printf   :%#-10X\n", d);
-	ft_printf("ft_printf:%#-10x\n", d);
+	tmp2 = ft_printf("ft_printf:%#-10x\n", d);
 	ft_printf("ft_printf:%#-10X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#-10.3x]");
 	   printf("printf   :%#-10.3x\n", d);
@@ -73,60 +83,69 @@ int main (void)
 	ft_printf("ft_printf:%#-10.3X\n", d);
 
 	puts("\n[%#-10.8x]");
-	   printf("printf   :%#-10.8x\n", d);
+	tmp1 =   printf("printf   :%#-10.8x\n", d);
 	   printf("printf   :%#-10.8X\n", d);
-	ft_printf("ft_printf:%#-10.8x\n", d);
+	tmp2 = ft_printf("ft_printf:%#-10.8x\n", d);
 	ft_printf("ft_printf:%#-10.8X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#-3.8x]");
-	   printf("printf   :%#-3.8x\n", d);
+	tmp1 =    printf("printf   :%#-3.8x\n", d);
 	   printf("printf   :%#-3.8X\n", d);
-	ft_printf("ft_printf:%#-3.8x\n", d);
+	tmp2 = ft_printf("ft_printf:%#-3.8x\n", d);
 	ft_printf("ft_printf:%#-3.8X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#-3.2x]");
-	   printf("printf   :%#-3.2x\n", d);
+	tmp1 =    printf("printf   :%#-3.2x\n", d);
 	   printf("printf   :%#-3.2X\n", d);
-	ft_printf("ft_printf:%#-3.2x\n", d);
+	tmp2 = ft_printf("ft_printf:%#-3.2x\n", d);
 	ft_printf("ft_printf:%#-3.2X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
-	puts("+++++++++++++++++++++++++++");
+	puts("\n+++++++++++++++++++++++++++");
 
 	puts("\n[%#0x]");
-	   printf("printf   :%#0x\n", d);
+	tmp1 =   printf("printf   :%#0x\n", d);
 	   printf("printf   :%#0X\n", d);
-	ft_printf("ft_printf:%#0x\n", d);
+	tmp2 = ft_printf("ft_printf:%#0x\n", d);
 	ft_printf("ft_printf:%#0X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#010x]");
-	   printf("printf   :%#010x\n", d);
+	tmp1 =   printf("printf   :%#010x\n", d);
 	   printf("printf   :%#010X\n", d);
-	ft_printf("ft_printf:%#010x\n", d);
+	tmp2 = ft_printf("ft_printf:%#010x\n", d);
 	ft_printf("ft_printf:%#010X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#010.3x]");
-	   printf("printf   :%#010.3x\n", d);
+	tmp1 =   printf("printf   :%#010.3x\n", d);
 	   printf("printf   :%#010.3X\n", d);
-	ft_printf("ft_printf:%#010.3x\n", d);
+	tmp2 = ft_printf("ft_printf:%#010.3x\n", d);
 	ft_printf("ft_printf:%#010.3X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#010.8x]");
-	   printf("printf   :%#010.8x\n", d);
+	tmp1 =   printf("printf   :%#010.8x\n", d);
 	   printf("printf   :%#010.8X\n", d);
-	ft_printf("ft_printf:%#010.8x\n", d);
+	tmp2 = ft_printf("ft_printf:%#010.8x\n", d);
 	ft_printf("ft_printf:%#010.8X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#03.8x]");
-	   printf("printf   :%#03.8x\n", d);
+	tmp1 =   printf("printf   :%#03.8x\n", d);
 	   printf("printf   :%#03.8X\n", d);
-	ft_printf("ft_printf:%#03.8x\n", d);
+	tmp2 = ft_printf("ft_printf:%#03.8x\n", d);
 	ft_printf("ft_printf:%#03.8X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#03.2x]");
-	   printf("printf   :%#03.2x\n", d);
+	tmp1 =   printf("printf   :%#03.2x\n", d);
 	   printf("printf   :%#03.2X\n", d);
-	ft_printf("ft_printf:%#03.2x\n", d);
+	tmp2 = ft_printf("ft_printf:%#03.2x\n", d);
 	ft_printf("ft_printf:%#03.2X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	return (0);
 }

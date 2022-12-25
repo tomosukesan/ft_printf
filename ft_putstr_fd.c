@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 19:47:48 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 12:07:31 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/25 17:03:54 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (s == NULL)
@@ -24,5 +24,5 @@ int	ft_putstr_fd(char *s, int fd)
 		write(fd, &s[i], 1);
 		i++;
 	}
-	return ((int)i);
+	return (i);
 }

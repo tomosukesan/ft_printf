@@ -12,18 +12,18 @@
 
 #include "ft_printf_bonus.h"
 
-static int	ft_cal_zero_count(t_flags flag, int abs_dig, int width);
-static int	ft_cal_empty_count(t_flags flag, int abs_dig, int width, int z_cnt);
+static int	ft_cal_zero_empty(t_flags flag, int abs_dig, int width, int *z_cnt);
 static void	ft_adapt_minus(t_flags flag, int num, int z_cnt, int e_cnt);
 static void	ft_adapt_flags(t_flags flag, int num, int z_cnt, int e_cnt);
+static void	ft_nbr_put_flags(t_flags flag, int n, int z_cnt);
 
 void	ft_nbr_flags(t_flags flag, int num, int abs_dig, int width)
 {
 	int	zero_count;
 	int	empty_count;
 
-	zero_count = ft_cal_zero_count(flag, abs_dig, width);
-	empty_count = ft_cal_empty_count(flag, abs_dig, width, zero_count);
+	zero_count = 0;
+	empty_count = ft_cal_zero_empty(flag, abs_dig, width, &zero_count);
 	if (flag.width || flag.precision)
 	{
 		if ((num >= 0 && (flag.plus || flag.space)) || num < 0)
@@ -39,27 +39,19 @@ void	ft_nbr_flags(t_flags flag, int num, int abs_dig, int width)
 		ft_adapt_flags(flag, num, zero_count, empty_count);
 }
 
-static int	ft_cal_zero_count(t_flags flag, int abs_dig, int width)
-{
-	int	zero_count;
-
-	zero_count = 0;
-	if (flag.precision > abs_dig)
-		zero_count = flag.precision - abs_dig;
-	else if (flag.zero && width > abs_dig)
-		zero_count = flag.width - abs_dig;
-	return (zero_count);
-}
-
-static int	ft_cal_empty_count(t_flags flag, int abs_dig, int width, int z_cnt)
+static int	ft_cal_zero_empty(t_flags flag, int abs_dig, int width, int *z_cnt)
 {
 	int	empty_count;
 
+	if (flag.precision > abs_dig)
+		*z_cnt = flag.precision - abs_dig;
+	else if (flag.zero && width > abs_dig)
+		*z_cnt = flag.width - abs_dig;
 	empty_count = 0;
 	if (flag.width)
 		empty_count = flag.width - abs_dig;
 	if (flag.zero)
-		empty_count -= z_cnt;
+		empty_count -= *z_cnt;
 	if (flag.precision > abs_dig)
 		empty_count = width - flag.precision;
 	return (empty_count);
@@ -85,4 +77,17 @@ static void	ft_adapt_flags(t_flags flag, int num, int z_cnt, int e_cnt)
 		ft_putnbr_fd(num * -1, 1);
 	else
 		ft_putnbr_fd(num, 1);
+}
+
+static void	ft_nbr_put_flags(t_flags flag, int n, int z_cnt)
+{
+	if (flag.plus && n >= 0)
+		ft_putchar_fd('+', 1);
+	else if (flag.space && n >= 0)
+		ft_putchar_fd(' ', 1);
+	else if (n < 0)
+		ft_putchar_fd('-', 1);
+	if (flag.zero)
+		while (z_cnt-- > 0)
+			ft_putchar_fd('0', 1);
 }

@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 05:53:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 12:07:01 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/25 19:17:51 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 static int	ft_put_hex(uintptr_t num, char *rule, int digit);
 
-int	ft_address_print(const char **argv, va_list ap)
+int	ft_address_print(va_list ap)
 {
 	uintptr_t	p;
 	int			digit;
 
 	p = va_arg(ap, uintptr_t);
-	digit = 0;
 	ft_putstr_fd("0x", 1);
-	digit = ft_put_hex(p, LOWERCASE_HEX, digit);
-	argv++;
+	digit = ft_put_hex(p, LOWERCASE_HEX, 0);
 	return (digit + 2);
 }
 

@@ -6,7 +6,7 @@
 #    By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 10:33:04 by ttachi            #+#    #+#              #
-#    Updated: 2022/12/22 12:03:42 by ttachi           ###   ########.fr        #
+#    Updated: 2022/12/24 23:42:22 by ttachi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,9 +51,9 @@ $(NAME): $(OBJS)
 
 preprocess:
 ifdef WITH_BONUS
-	@if find . -name $(NAME) && nm -u $(NAME) | grep ft_printf.o; then $(RM) $(NAME); fi;
+	@if nm -u $(NAME) | grep -sq ft_printf.o; then $(RM) $(NAME); fi;
 else
-	@if find . -name $(NAME) && nm -u $(NAME) | grep bonus; then $(RM) $(NAME); fi;
+	@if nm -u $(NAME) | grep -sq bonus; then $(RM) $(NAME); fi;
 endif
 
 bonus:

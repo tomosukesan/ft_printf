@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:52:44 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/22 15:22:51 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/25 16:23:39 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <stddef.h>
 # include <inttypes.h>
 
 # define LOWERCASE_HEX "0123456789abcdef"
@@ -49,15 +48,14 @@ int		ft_strlen_bonus(const char *str);
 int		ft_address_print_bonus(const char **argv, va_list ap, t_flags flag);
 int		ft_nbr_print_bonus(const char **argv, va_list ap, t_flags flag);
 void	ft_nbr_flags(t_flags flag, int num, int abs_dig, int width);
-void	ft_nbr_put_flags(t_flags flag, int n, int z_cnt);
 int		ft_decimal_print_bonus(const char **argv, va_list ap, t_flags flag);
 int		ft_hex_process(const char **argv, va_list ap, char *rule, t_flags flag);
 void	ft_hex_print(unsigned int num, char *rule);
-int		ft_hex_print_prefix(char *rule);
-void	ft_hex_flags(unsigned int x, int width, t_flags flag, char *rule);
-void	ft_putnbr_fd(int n, int fd);
+int		ft_hex_prefix(unsigned int x, t_flags flag, char *rule);
+int		ft_hex_flags(unsigned int x, int width, t_flags flag, char *rule);
 int		ft_putchar_fd(char c, int fd);
 int		ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 int		ft_cal_abs_digit(long long num);
 int		ft_cal_hex_digit(unsigned long num);
 

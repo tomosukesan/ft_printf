@@ -6,14 +6,14 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:02:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/11 22:00:28 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/22 19:51:20 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static void	ft_decimal_flag(unsigned int n, int digit, t_flags flag, int width);
-static void	ft_blank_handle(unsigned int n, int e_cnt, int z_cnt, t_flags flag);
+static void	cnt_zero_empty(unsigned int n, int digit, t_flags flag, int width);
+static void	ft_adapt_flags(unsigned int n, int e_cnt, int z_cnt, t_flags flag);
 static void	ft_put_uinbr_fd(unsigned int n, int fd, int digit);
 
 int	ft_decimal_print_bonus(const char **argv, va_list ap, t_flags flag)
@@ -39,12 +39,12 @@ int	ft_decimal_print_bonus(const char **argv, va_list ap, t_flags flag)
 		ft_put_uinbr_fd(num, 1, digit);
 	}
 	else if (digit < result)
-		ft_decimal_flag(num, digit, flag, result);
+		cnt_zero_empty(num, digit, flag, result);
 	argv++;
 	return (result);
 }
 
-static void	ft_decimal_flag(unsigned int n, int digit, t_flags flag, int width)
+static void	cnt_zero_empty(unsigned int n, int digit, t_flags flag, int width)
 {
 	int	zero_count;
 	int	empty_count;
@@ -63,10 +63,10 @@ static void	ft_decimal_flag(unsigned int n, int digit, t_flags flag, int width)
 		zero_count = flag.width - digit;
 		empty_count = 0;
 	}
-	ft_blank_handle(n, empty_count, zero_count, flag);
+	ft_adapt_flags(n, empty_count, zero_count, flag);
 }
 
-static void	ft_blank_handle(unsigned int n, int e_cnt, int z_cnt, t_flags flag)
+static void	ft_adapt_flags(unsigned int n, int e_cnt, int z_cnt, t_flags flag)
 {
 	int	digit;
 
@@ -92,10 +92,10 @@ static void	ft_blank_handle(unsigned int n, int e_cnt, int z_cnt, t_flags flag)
 static void	ft_put_uinbr_fd(unsigned int n, int fd, int digit)
 {
 	long long	devisor;
-	long long	tmp;
+	long long	ll_num;
 
 	devisor = 1;
-	tmp = (long long)n;
+	ll_num = (long long)n;
 	while (n >= 10)
 	{
 		devisor *= 10;
@@ -104,8 +104,8 @@ static void	ft_put_uinbr_fd(unsigned int n, int fd, int digit)
 	}
 	while (devisor)
 	{
-		ft_putchar_fd((tmp / devisor) + '0', fd);
-		tmp %= devisor;
+		ft_putchar_fd((ll_num / devisor) + '0', fd);
+		ll_num %= devisor;
 		devisor /= 10;
 	}
 }
