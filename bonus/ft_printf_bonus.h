@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:52:44 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/25 16:23:39 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/27 00:41:40 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,13 @@ int		ft_printf(const char *argv, ...);
 void	ft_check_minus_zero(const char **argv, t_flags *flag);
 void	ft_check_space_plus(const char **argv, t_flags *flag);
 void	ft_check_sharp(const char **argv, t_flags *flag);
-int		ft_cal_width(const char **argv);
-int		ft_cal_precision(const char **argv, t_flags *flag);
-int		ft_chr_print_bonus(const char **argv, va_list ap, t_flags flag);
-int		ft_str_print_bonus(const char **argv, va_list ap, t_flags flag);
+int		ft_cal_field_num(const char **argv);
+int		ft_chr_print_bonus(va_list ap, t_flags flag);
+int		ft_str_print_bonus(va_list ap, t_flags flag);
 int		ft_strlen_bonus(const char *str);
-int		ft_address_print_bonus(const char **argv, va_list ap, t_flags flag);
-int		ft_nbr_print_bonus(const char **argv, va_list ap, t_flags flag);
-void	ft_nbr_flags(t_flags flag, int num, int abs_dig, int width);
+int		ft_address_print_bonus(va_list ap, t_flags flag);
+int		ft_nbr_print_bonus(va_list ap, t_flags flag);
+void	ft_nbr_flags(t_flags flag, int num, int abs_dig);
 int		ft_decimal_print_bonus(const char **argv, va_list ap, t_flags flag);
 int		ft_hex_process(const char **argv, va_list ap, char *rule, t_flags flag);
 void	ft_hex_print(unsigned int num, char *rule);

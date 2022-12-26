@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_flag_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 18:03:38 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/22 14:51:51 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/25 22:10:25 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_check_sharp(const char **argv, t_flags *flag)
 		(*argv)++;
 }
 
-int	ft_cal_width(const char **argv)
+int	ft_cal_field_num(const char **argv)
 {
 	long	result;
 
@@ -61,21 +61,4 @@ int	ft_cal_width(const char **argv)
 		(*argv)++;
 	}
 	return ((int)result);
-}
-
-int	ft_cal_precision(const char **argv, t_flags *flag)
-{
-	int	result;
-
-	flag->dot = TRUE;
-	(*argv)++;
-	result = 0;
-	while ('0' <= **argv && **argv <= '9')
-	{
-		if (result >= (INT_MAX - (**argv - '0')) / 10)
-			return (-1);
-		result = result * 10 + (**argv - '0');
-		(*argv)++;
-	}
-	return (result);
 }

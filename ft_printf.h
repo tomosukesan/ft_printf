@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:40:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/25 17:30:47 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/25 21:49:45 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
 # include <inttypes.h>
 
 # define LOWERCASE_HEX "0123456789abcdef"

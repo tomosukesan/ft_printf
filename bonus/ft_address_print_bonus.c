@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_address_print_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 05:53:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/22 15:20:16 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/25 22:57:36 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 static int	ft_put_address(uintptr_t num, char *rule, int digit);
 static void	ft_address_adapt_width(t_flags flag, uintptr_t	p, int digit);
 
-int	ft_address_print_bonus(const char **argv, va_list ap, t_flags flag)
+int	ft_address_print_bonus(va_list ap, t_flags flag)
 {
 	uintptr_t	p;
 	int			result;
 	int			digit;
 
 	p = va_arg(ap, uintptr_t);
-	result = 0;
 	digit = ft_cal_hex_digit(p);
 	flag.width -= 2;
 	if (digit >= flag.width)
@@ -31,13 +30,12 @@ int	ft_address_print_bonus(const char **argv, va_list ap, t_flags flag)
 		ft_putstr_fd("0x", 1);
 		ft_put_address(p, LOWERCASE_HEX, digit);
 	}
-	else if (digit < flag.width)
+	else
 	{
 		result = flag.width;
 		flag.width -= digit;
 		ft_address_adapt_width(flag, p, digit);
 	}
-	argv++;
 	return (result + 2);
 }
 

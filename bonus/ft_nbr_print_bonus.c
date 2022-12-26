@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/22 18:13:08 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/27 00:41:27 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_put_space_plus_num(t_flags flag, int num);
 
-int	ft_nbr_print_bonus(const char **argv, va_list ap, t_flags flag)
+int	ft_nbr_print_bonus(va_list ap, t_flags flag)
 {
 	int	num;
 	int	abs_digit;
@@ -37,9 +37,8 @@ int	ft_nbr_print_bonus(const char **argv, va_list ap, t_flags flag)
 		flag.zero = FALSE;
 	if (abs_digit + minus >= result)
 		result = abs_digit + minus + ft_put_space_plus_num(flag, num);
-	else if (abs_digit + minus < result)
-		ft_nbr_flags(flag, num, abs_digit, result);
-	argv++;
+	else
+		ft_nbr_flags(flag, num, abs_digit);
 	return (result);
 }
 

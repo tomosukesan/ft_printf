@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/24 01:47:37 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/25 23:07:09 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	ft_printf(const char *argv, ...)
 	va_start(ap, argv);
 	while (*argv != '\0')
 	{
-		ret_val = 1;
 		if (*argv == '%')
 		{
 			argv++;
@@ -59,9 +58,13 @@ static int	judge_detail(const char **argv, va_list ap)
 			ft_check_sharp(argv, &flag);
 	}
 	if ('0' <= **argv && **argv <= '9')
-		flag.width = ft_cal_width(argv);
+		flag.width = ft_cal_field_num(argv);
 	if (**argv == '.')
-		flag.precision = ft_cal_precision(argv, &flag);
+	{
+		flag.dot = TRUE;
+		(*argv)++;
+		flag.precision = ft_cal_field_num(argv);
+	}
 	if (flag.width == -1 || flag.precision == -1)
 		return (-1);
 	return (judge_format(argv, ap, flag));
@@ -102,13 +105,13 @@ static int	judge_format(const char **argv, va_list ap, t_flags flag)
 
 	result = 0;
 	if (**argv == 'c')
-		result = ft_chr_print_bonus(argv, ap, flag);
+		result = ft_chr_print_bonus(ap, flag);
 	else if (**argv == 's')
-		result = ft_str_print_bonus(argv, ap, flag);
+		result = ft_str_print_bonus(ap, flag);
 	else if (**argv == 'p')
-		result = ft_address_print_bonus(argv, ap, flag);
+		result = ft_address_print_bonus(ap, flag);
 	else if (**argv == 'd' || **argv == 'i')
-		result = ft_nbr_print_bonus(argv, ap, flag);
+		result = ft_nbr_print_bonus(ap, flag);
 	else if (**argv == 'u')
 		result = ft_decimal_print_bonus(argv, ap, flag);
 	else if (**argv == 'x')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_print_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:01:41 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/22 14:48:57 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/25 22:52:50 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_str_adapt_width(char *s, int s_len, t_flags flag);
 
-int	ft_str_print_bonus(const char **argv, va_list ap, t_flags flag)
+int	ft_str_print_bonus(va_list ap, t_flags flag)
 {
 	char	*s;
 	int		s_len;
@@ -28,15 +28,13 @@ int	ft_str_print_bonus(const char **argv, va_list ap, t_flags flag)
 		return (0);
 	if (flag.dot && s_len > flag.precision)
 		s_len = flag.precision;
-	result = 0;
 	if (s_len >= flag.width)
 	{
 		result = s_len;
 		write(1, s, s_len);
 	}
-	else if (s_len < flag.width)
+	else
 		result = ft_str_adapt_width(s, s_len, flag);
-	argv++;
 	return (result);
 }
 
