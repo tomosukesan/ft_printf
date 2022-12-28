@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/25 23:07:09 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/27 19:56:34 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,11 @@ static int	judge_format(const char **argv, va_list ap, t_flags flag)
 	else if (**argv == 'd' || **argv == 'i')
 		result = ft_nbr_print_bonus(ap, flag);
 	else if (**argv == 'u')
-		result = ft_decimal_print_bonus(argv, ap, flag);
+		result = ft_decimal_print_bonus(ap, flag);
 	else if (**argv == 'x')
-		result = ft_hex_process(argv, ap, LOWERCASE_HEX, flag);
+		result = ft_hex_process(ap, LOWERCASE_HEX, flag);
 	else if (**argv == 'X')
-		result = ft_hex_process(argv, ap, UPPERCASE_HEX, flag);
+		result = ft_hex_process(ap, UPPERCASE_HEX, flag);
 	else if (**argv == '%')
 		result = ft_putchar_fd('%', 1);
 	return (result);

@@ -14,7 +14,7 @@ int main (void)
     - zero
         - %#0x
         - %010x ＞ MISS：0が過多 ＞ ft_hex_flags関数でのif (flag.zero)内を変更
-        - %010.3x ＞ MISS：0が過小 ＞ dotフラグの有無で変化するよう対処
+        - %010.1x ＞ MISS：0が過小 ＞ dotフラグの有無で変化するよう対処
         - %010.8x, %03.8x, %03.2x
 */
 
@@ -32,11 +32,11 @@ int main (void)
 	ft_printf("ft_printf:%#10X\n", d);
 	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
-	puts("\n[%#10.3x]");
-	tmp1 =   printf("printf   :%#10.3x\n", d);
-	   printf("printf   :%#10.3X\n", d);
-	tmp2 = ft_printf("ft_printf:%#10.3x\n", d);
-	ft_printf("ft_printf:%#10.3X\n", d);
+	puts("\n[%#10.1x]");
+	tmp1 =   printf("printf   :%#10.1x\n", d);
+	   printf("printf   :%#10.1X\n", d);
+	tmp2 = ft_printf("ft_printf:%#10.1x\n", d);
+	ft_printf("ft_printf:%#10.1X\n", d);
 	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#10.8x]");
@@ -76,11 +76,11 @@ int main (void)
 	ft_printf("ft_printf:%#-10X\n", d);
 	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
-	puts("\n[%#-10.3x]");
-	   printf("printf   :%#-10.3x\n", d);
-	   printf("printf   :%#-10.3X\n", d);
-	ft_printf("ft_printf:%#-10.3x\n", d);
-	ft_printf("ft_printf:%#-10.3X\n", d);
+	puts("\n[%#-10.1x]");
+	   printf("printf   :%#-10.1x\n", d);
+	   printf("printf   :%#-10.1X\n", d);
+	ft_printf("ft_printf:%#-10.1x\n", d);
+	ft_printf("ft_printf:%#-10.1X\n", d);
 
 	puts("\n[%#-10.8x]");
 	tmp1 =   printf("printf   :%#-10.8x\n", d);
@@ -119,11 +119,11 @@ int main (void)
 	ft_printf("ft_printf:%#010X\n", d);
 	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
-	puts("\n[%#010.3x]");
-	tmp1 =   printf("printf   :%#010.3x\n", d);
-	   printf("printf   :%#010.3X\n", d);
-	tmp2 = ft_printf("ft_printf:%#010.3x\n", d);
-	ft_printf("ft_printf:%#010.3X\n", d);
+	puts("\n[%#010.1x]");
+	tmp1 =   printf("printf   :%#010.1x\n", d);
+	   printf("printf   :%#010.1X\n", d);
+	tmp2 = ft_printf("ft_printf:%#010.1x\n", d);
+	ft_printf("ft_printf:%#010.1X\n", d);
 	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
 	puts("\n[%#010.8x]");
@@ -147,5 +147,11 @@ int main (void)
 	ft_printf("ft_printf:%#03.2X\n", d);
 	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
+	puts("\n[%#.9x]");
+	tmp1 =   printf("printf   :%#.9x\n", 0);
+	   printf("printf   :%#.9x\n", 0);
+	tmp2 = ft_printf("ft_printf:%#.9x\n", 0);
+	ft_printf("ft_printf:%#.9x\n", 0);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 	return (0);
 }

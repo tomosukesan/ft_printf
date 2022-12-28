@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:52:44 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/27 00:41:40 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/27 19:56:59 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int		ft_strlen_bonus(const char *str);
 int		ft_address_print_bonus(va_list ap, t_flags flag);
 int		ft_nbr_print_bonus(va_list ap, t_flags flag);
 void	ft_nbr_flags(t_flags flag, int num, int abs_dig);
-int		ft_decimal_print_bonus(const char **argv, va_list ap, t_flags flag);
-int		ft_hex_process(const char **argv, va_list ap, char *rule, t_flags flag);
+int		ft_decimal_print_bonus(va_list ap, t_flags flag);
+int		ft_hex_process(va_list ap, char *rule, t_flags flag);
 void	ft_hex_print(unsigned int num, char *rule);
 int		ft_hex_prefix(unsigned int x, t_flags flag, char *rule);
 int		ft_hex_flags(unsigned int x, int width, t_flags flag, char *rule);

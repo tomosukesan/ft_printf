@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 18:03:38 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/25 22:10:25 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/28 11:37:14 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_check_space_plus(const char **argv, t_flags *flag)
 void	ft_check_sharp(const char **argv, t_flags *flag)
 {
 	if (**argv == '#')
-		flag->sharp = TRUE;
+		flag->sharp = TRUE * 2;
 	(*argv)++;
 	while (**argv == '#')
 		(*argv)++;
