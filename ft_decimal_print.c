@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_decimal_print.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:02:52 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/25 17:50:05 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 21:47:43 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	ft_decimal_print(va_list ap)
 
 static int	ft_put_plusnbr_fd(unsigned int num)
 {
-	int			digit;
-	long long	devisor;
-	long long	ll_num;
+	int		digit;
+	long	devisor;
+	long	l_num;
 
 	digit = 1;
 	devisor = 1;
-	ll_num = (long long)num;
+	l_num = (long)num;
 	while (num >= 10)
 	{
 		devisor *= 10;
@@ -41,8 +41,8 @@ static int	ft_put_plusnbr_fd(unsigned int num)
 	}
 	while (devisor)
 	{
-		ft_putchar_fd((ll_num / devisor) + '0', 1);
-		ll_num %= devisor;
+		ft_putchar_fd((l_num / devisor) + '0', 1);
+		l_num %= devisor;
 		devisor /= 10;
 	}
 	return (digit);

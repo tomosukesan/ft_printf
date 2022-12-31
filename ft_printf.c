@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/25 17:30:13 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 21:25:41 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static int	judge_format(const char **argv, va_list ap);
 int	ft_printf(const char *argv, ...)
 {
 	va_list	ap;
-	int		result;
+	long	result;
+	int		ret_val;
 
 	result = 0;
 	va_start(ap, argv);
@@ -26,17 +27,19 @@ int	ft_printf(const char *argv, ...)
 		if (*argv == '%')
 		{
 			argv++;
-			result += judge_format(&argv, ap);
+			ret_val = judge_format(&argv, ap);
+			if (ret_val < 0)
+				return (-1);
+			result += ret_val;
 		}
 		else
-		{
-			write(1, argv, 1);
-			argv++;
-			result++;
-		}
+			result += ft_putchar_fd(*argv, 1);
+		if (result > INT_MAX)
+			return (-1);
+		argv++;
 	}
 	va_end(ap);
-	return (result);
+	return ((int)result);
 }
 
 static int	judge_format(const char **argv, va_list ap)
@@ -60,6 +63,5 @@ static int	judge_format(const char **argv, va_list ap)
 		result = ft_up_hex_print(ap);
 	else if (**argv == '%')
 		result = ft_putchar_fd('%', 1);
-	(*argv)++;
 	return (result);
 }

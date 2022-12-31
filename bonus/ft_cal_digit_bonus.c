@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cal_digit_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:03:19 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 14:17:39 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 18:03:18 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	ft_cal_abs_digit(long long num)
+int	ft_cal_abs_digit(long num)
 {
-	int					digit;
-	unsigned long long	abs_num;
+	int				digit;
+	unsigned long	abs_num;
 
 	digit = 0;
 	if (num < 0)

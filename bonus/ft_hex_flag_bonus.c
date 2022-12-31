@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hex_flag_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:40:45 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/28 19:27:54 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 16:25:10 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_adapt_minus(unsigned int x, int width, t_flags flag, char *rule)
 	digit = ft_cal_hex_digit(x);
 	zero_count = ft_cal_zero(flag, digit, &width);
 	empty_count = width - zero_count - digit;
-	if (x != 0 && flag.sharp)
+	if (flag.sharp)
 		empty_count -= 2;
 	ft_hex_prefix(x, flag, rule);
 	while (zero_count-- > 0)
