@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:52:38 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/31 16:17:09 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 21:57:04 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_hex_process(va_list ap, char *rule, t_flags flag)
 	x = va_arg(ap, unsigned int);
 	if (x == 0)
 		flag.sharp = FALSE;
-	digit = ft_cal_hex_digit(x);
+	digit = ft_cal_hex_digit((unsigned long)x);
 	result = flag.width;
 	if (flag.precision > digit)
 	{
