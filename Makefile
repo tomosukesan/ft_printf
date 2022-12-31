@@ -6,7 +6,7 @@
 #    By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 10:33:04 by ttachi            #+#    #+#              #
-#    Updated: 2022/12/24 23:42:22 by ttachi           ###   ########.fr        #
+#    Updated: 2022/12/28 21:22:23 by ttachi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SRCS_BONUS = ./bonus/ft_printf_bonus.c \
 	./bonus/ft_putnbr_fd_bonus.c \
 	./bonus/ft_putstr_fd_bonus.c \
 	./bonus/ft_str_print_bonus.c \
-	./bonus/ft_strlen_bonus.c \
 	./bonus/ft_cal_digit_bonus.c \
 	./bonus/ft_check_flag_bonus.c
 

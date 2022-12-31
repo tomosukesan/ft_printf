@@ -6,16 +6,16 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/27 19:56:34 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/28 13:23:36 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static int	judge_detail(const char **argv, va_list ap);
+static int	ft_judge_detail(const char **argv, va_list ap);
 static void	*ft_memset(void *buf, int ch, size_t n);
 static char	*ft_strchr(const char *s, int c);
-static int	judge_format(const char **argv, va_list ap, t_flags flag);
+static int	ft_judge_format(const char **argv, va_list ap, t_flags flag);
 
 int	ft_printf(const char *argv, ...)
 {
@@ -30,7 +30,7 @@ int	ft_printf(const char *argv, ...)
 		if (*argv == '%')
 		{
 			argv++;
-			ret_val = judge_detail(&argv, ap);
+			ret_val = ft_judge_detail(&argv, ap);
 			if (ret_val < 0)
 				return (-1);
 			result += ret_val;
@@ -43,7 +43,7 @@ int	ft_printf(const char *argv, ...)
 	return (result);
 }
 
-static int	judge_detail(const char **argv, va_list ap)
+static int	ft_judge_detail(const char **argv, va_list ap)
 {
 	t_flags	flag;
 
@@ -52,7 +52,7 @@ static int	judge_detail(const char **argv, va_list ap)
 	{
 		if (**argv == '-' || **argv == '0')
 			ft_check_minus_zero(argv, &flag);
-		if (**argv == ' ' || **argv == '+')
+		if (**argv == '+' || **argv == ' ')
 			ft_check_space_plus(argv, &flag);
 		else if (**argv == '#')
 			ft_check_sharp(argv, &flag);
@@ -67,7 +67,7 @@ static int	judge_detail(const char **argv, va_list ap)
 	}
 	if (flag.width == -1 || flag.precision == -1)
 		return (-1);
-	return (judge_format(argv, ap, flag));
+	return (ft_judge_format(argv, ap, flag));
 }
 
 static void	*ft_memset(void *buf, int ch, size_t n)
@@ -99,7 +99,7 @@ static char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-static int	judge_format(const char **argv, va_list ap, t_flags flag)
+static int	ft_judge_format(const char **argv, va_list ap, t_flags flag)
 {
 	int	result;
 

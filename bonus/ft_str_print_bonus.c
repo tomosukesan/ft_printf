@@ -6,13 +6,15 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:01:41 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/25 22:52:50 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/28 21:23:15 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static int	ft_str_adapt_width(char *s, int s_len, t_flags flag);
+static int	ft_strlen_bonus(const char *str);
+static int	ft_process_other(char *s, int s_len, t_flags flag);
+static void	ft_str_adapt_width(char *s, int s_len, t_flags flag);
 
 int	ft_str_print_bonus(va_list ap, t_flags flag)
 {
@@ -26,23 +28,43 @@ int	ft_str_print_bonus(va_list ap, t_flags flag)
 	s_len = ft_strlen_bonus(s);
 	if (flag.dot && (flag.width == 0 && flag.precision == 0))
 		return (0);
-	if (flag.dot && s_len > flag.precision)
-		s_len = flag.precision;
-	if (s_len >= flag.width)
+	if (flag.width > flag.precision && flag.width > s_len)
 	{
-		result = s_len;
-		write(1, s, s_len);
+		result = flag.width;
+		if (flag.dot && flag.precision < s_len)
+			ft_str_adapt_width(s, flag.precision, flag);
+		else
+			ft_str_adapt_width(s, s_len, flag);
 	}
 	else
-		result = ft_str_adapt_width(s, s_len, flag);
+		result = ft_process_other(s, s_len, flag);
 	return (result);
 }
 
-static int	ft_str_adapt_width(char *s, int s_len, t_flags flag)
+static int	ft_process_other(char *s, int s_len, t_flags flag)
 {
-	int	ret_val;
+	int	result;
 
-	ret_val = flag.width;
+	if ((flag.precision > flag.width && flag.precision > s_len) || !flag.dot)
+	{
+		result = s_len;
+		if (flag.dot && s_len > flag.precision)
+			result = flag.precision;
+		write(1, s, s_len);
+	}
+	else
+	{
+		ft_str_adapt_width(s, flag.precision, flag);
+		if (flag.width >= flag.precision)
+			result = flag.width;
+		else
+			result = flag.precision;
+	}
+	return (result);
+}
+
+static void	ft_str_adapt_width(char *s, int s_len, t_flags flag)
+{
 	flag.width -= s_len;
 	if (flag.minus)
 	{
@@ -56,5 +78,14 @@ static int	ft_str_adapt_width(char *s, int s_len, t_flags flag)
 			ft_putchar_fd(' ', 1);
 		write(1, s, s_len);
 	}
-	return (ret_val);
+}
+
+static int	ft_strlen_bonus(const char *str)
+{
+	int	len;
+
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:52:44 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/27 19:56:59 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/28 21:22:12 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	ft_check_sharp(const char **argv, t_flags *flag);
 int		ft_cal_field_num(const char **argv);
 int		ft_chr_print_bonus(va_list ap, t_flags flag);
 int		ft_str_print_bonus(va_list ap, t_flags flag);
-int		ft_strlen_bonus(const char *str);
 int		ft_address_print_bonus(va_list ap, t_flags flag);
 int		ft_nbr_print_bonus(va_list ap, t_flags flag);
 void	ft_nbr_flags(t_flags flag, int num, int abs_dig);

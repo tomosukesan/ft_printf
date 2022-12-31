@@ -133,6 +133,13 @@ int main (void)
 	ft_printf("ft_printf:%#010.8X\n", d);
 	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
 
+	puts("\n[%#08.10x]");
+	tmp1 =   printf("printf   :%#08.10x\n", d);
+	   printf("printf   :%#08.10X\n", d);
+	tmp2 = ft_printf("ft_printf:%#08.10x\n", d);
+	ft_printf("ft_printf:%#08.10X\n", d);
+	printf("printf: %d, ft_printf: %d", tmp1, tmp2);
+
 	puts("\n[%#03.8x]");
 	tmp1 =   printf("printf   :%#03.8x\n", d);
 	   printf("printf   :%#03.8X\n", d);

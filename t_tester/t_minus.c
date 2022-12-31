@@ -47,6 +47,25 @@ int main (void)
 	ft_printf("ft_printf:%-10p\n", &d);
 	printf("printf: %d   ft_printf: %d\n", ret_val1, ret_val2);
 
+	puts("\n[%-9.10d]");
+	   printf("printf   :%-9.10c\n", c);
+	   printf("printf   :%-9.10s\n", s);
+	   printf("printf   :%-9.10d\n", d);
+	   printf("printf   :%-9.10d\n", m);
+	   printf("printf   :%-9.10u\n", d);
+	   printf("printf   :%-9.10x\n", d);
+	ret_val1 =   printf("printf   :%-9.10X\n", d);
+	   printf("printf   :%-9.10p\n", &d);
+	ft_printf("ft_printf:%-9.10c\n", c);
+	ft_printf("ft_printf:%-9.10s\n", s);
+	ft_printf("ft_printf:%-9.10d\n", d);
+	ft_printf("ft_printf:%-9.10d\n", m);
+	ft_printf("ft_printf:%-9.10u\n", d);
+	ft_printf("ft_printf:%-9.10x\n", d);
+	ret_val2 = ft_printf("ft_printf:%-9.10X\n", d);
+	ft_printf("ft_printf:%-9.10p\n", &d);
+	printf("printf: %d   ft_printf: %d\n", ret_val1, ret_val2);
+
 	puts("\n[%-10.3d]");
 	   printf("printf   :%-10.3c\n", c);	// undefined
 	   printf("printf   :%-10.3s\n", s);

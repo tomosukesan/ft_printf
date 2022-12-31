@@ -7,6 +7,7 @@ int main (void)
 	char	*s = "42tokyo";
 	int		d = 42;
 	int		m = -42;
+	int		tmp1, tmp2;
 
 // none
 	puts("\n[%.d]");
@@ -280,20 +281,25 @@ int main (void)
 
 	// with zero
 	puts("\n[%#0.x]");
-	   printf("printf   :%#0.x\n", d);
+	tmp1 =   printf("printf   :%#0.x\n", d);
 	   printf("printf   :%#0.X\n", d);
-	ft_printf("ft_printf:%#0.x\n", d);
+	tmp2 = ft_printf("ft_printf:%#0.x\n", d);
 	ft_printf("ft_printf:%#0.X\n", d);
+	printf("printf: %d, ft_printf: %d\n", tmp1, tmp2);
 
 	puts("\n[%#010.x]");
-	   printf("printf   :%#010.x\n", d);
+	tmp1 =   printf("printf   :%#010.x\n", d);
 	   printf("printf   :%#010.X\n", d);
-	ft_printf("ft_printf:%#010.x\n", d);
+	tmp2 = ft_printf("ft_printf:%#010.x\n", d);
 	ft_printf("ft_printf:%#010.X\n", d);
+	printf("printf: %d, ft_printf: %d\n", tmp1, tmp2);
 
 	puts("\n[%#03.x]");
-	   printf("printf   :%#03.x\n", d);
+	tmp1 =   printf("printf   :%#03.x\n", d);
 	   printf("printf   :%#03.X\n", d);
-	ft_printf("ft_printf:%#03.x\n", d);
+	tmp2 = ft_printf("ft_printf:%#03.x\n", d);
 	ft_printf("ft_printf:%#03.X\n", d);
+	printf("printf: %d, ft_printf: %d\n", tmp1, tmp2);
+
+	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:40:45 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/28 13:17:31 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/28 19:27:54 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static int	ft_cal_zero(unsigned int x, t_flags flag, int digit, int *width);
+static int	ft_cal_zero(t_flags flag, int digit, int *width);
 static int	ft_adapt_minus(unsigned int x, int width, t_flags flag, char *rule);
 static int	ft_adapt_flags(unsigned int x, int width, t_flags flag, char *rule);
 
@@ -34,7 +34,7 @@ static int	ft_adapt_minus(unsigned int x, int width, t_flags flag, char *rule)
 	int	empty_count;
 
 	digit = ft_cal_hex_digit(x);
-	zero_count = ft_cal_zero(x, flag, digit, &width);
+	zero_count = ft_cal_zero(flag, digit, &width);
 	empty_count = width - zero_count - digit;
 	if (x != 0 && flag.sharp)
 		empty_count -= 2;
@@ -54,10 +54,8 @@ static int	ft_adapt_flags(unsigned int x, int width, t_flags flag, char *rule)
 	int	empty_count;
 
 	digit = ft_cal_hex_digit(x);
-	zero_count = ft_cal_zero(x, flag, digit, &width);
-	empty_count = width - zero_count - digit;
-	if (x != 0 && flag.sharp)
-		empty_count -= 2;
+	zero_count = ft_cal_zero(flag, digit, &width);
+	empty_count = width - zero_count - digit - flag.sharp;
 	while (empty_count-- > 0)
 		ft_putchar_fd(' ', 1);
 	ft_hex_prefix(x, flag, rule);
@@ -67,7 +65,7 @@ static int	ft_adapt_flags(unsigned int x, int width, t_flags flag, char *rule)
 	return (width);
 }
 
-static int	ft_cal_zero(unsigned int x, t_flags flag, int digit, int *width)
+static int	ft_cal_zero(t_flags flag, int digit, int *width)
 {
 	int	zero_count;
 
@@ -79,12 +77,15 @@ static int	ft_cal_zero(unsigned int x, t_flags flag, int digit, int *width)
 		else
 			if (flag.zero)
 				zero_count = flag.width - digit - flag.sharp;
+		if (flag.width < flag.precision + flag.sharp)
+			*width = flag.precision + flag.sharp;
+		else if (flag.width < digit + flag.sharp)
+			*width = digit + flag.sharp;
 	}
 	else
 	{
 		zero_count = flag.precision - digit;
-		if (x != 0)
-			*width += flag.sharp;
+		*width += flag.sharp;
 	}
 	return (zero_count);
 }

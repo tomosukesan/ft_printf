@@ -83,6 +83,24 @@ int main (void)
 	ft_printf("ft_printf:%010.8X\n", d);
 	//ft_printf("ft_printf:%010.8p\n", &d);
 
+	puts("\n[%08.10d]");
+	//   printf("printf   :%010.8c\n", c);	// undefined
+	//   printf("printf   :%010.8s\n", s);
+	   printf("printf   :%08.10d\n", d);
+	   printf("printf   :%08.10d\n", m);
+	   printf("printf   :%08.10u\n", d);
+	   printf("printf   :%08.10x\n", d);
+	   printf("printf   :%08.10X\n", d);
+	//   printf("printf   :%010.8p\n", &d);	// undefined
+	//ft_printf("ft_printf:%010.8c\n", c);
+	//ft_printf("ft_printf:%010.8s\n", s);
+	ft_printf("ft_printf:%08.10d\n", d);
+	ft_printf("ft_printf:%08.10d\n", m);
+	ft_printf("ft_printf:%08.10u\n", d);
+	ft_printf("ft_printf:%08.10x\n", d);
+	ft_printf("ft_printf:%08.10X\n", d);
+	//ft_printf("ft_printf:%010.8p\n", &d);
+
 	puts("\n[%03.8d]");
 	//   printf("printf   :%03.08c\n", c);		// undefined
 	//   printf("printf   :%03.08s\n", s);
