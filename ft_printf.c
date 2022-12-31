@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/31 18:13:27 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 18:26:48 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,5 @@ static int	judge_format(const char **argv, va_list ap)
 		result = ft_up_hex_print(ap);
 	else if (**argv == '%')
 		result = ft_putchar_fd('%', 1);
-	(*argv)++;
 	return (result);
 }

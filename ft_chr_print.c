@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chr_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:38:40 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/25 17:26:57 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 18:26:30 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@ int	ft_chr_print(va_list ap)
 	char	c;
 
 	c = va_arg(ap, int);
-	ft_putchar_fd(c, 1);
-	return (1);
+	return (ft_putchar_fd(c, 1));
 }
