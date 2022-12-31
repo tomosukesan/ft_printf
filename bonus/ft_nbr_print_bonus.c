@@ -3,46 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nbr_print_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/27 00:41:27 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 18:05:03 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static int	ft_put_space_plus_num(t_flags flag, int num);
+static int	ft_put_plus_space_num(t_flags flag, int num);
 
 int	ft_nbr_print_bonus(va_list ap, t_flags flag)
 {
-	int	num;
-	int	abs_digit;
-	int	minus;
-	int	result;
+	int		num;
+	int		abs_digit;
+	char	negative;
+	int		result;
 
 	num = va_arg(ap, int);
-	abs_digit = ft_cal_abs_digit((long long)num);
-	minus = FALSE;
+	abs_digit = ft_cal_abs_digit((long)num);
+	negative = FALSE;
 	if (num < 0)
-		minus = TRUE;
+		negative = TRUE;
 	result = flag.width;
 	if (flag.precision > abs_digit)
 	{
 		flag.zero = TRUE;
 		if (flag.precision > flag.width)
-			result = flag.precision + (minus || flag.plus || flag.sharp);
+			result = flag.precision + (negative || flag.plus || flag.sharp);
 	}
 	else if (flag.dot && flag.precision <= abs_digit)
 		flag.zero = FALSE;
-	if (abs_digit + minus >= result)
-		result = abs_digit + minus + ft_put_space_plus_num(flag, num);
+	if (abs_digit + negative >= result)
+		result = abs_digit + negative + ft_put_plus_space_num(flag, num);
 	else
 		ft_nbr_flags(flag, num, abs_digit);
 	return (result);
 }
 
-static int	ft_put_space_plus_num(t_flags flag, int num)
+static int	ft_put_plus_space_num(t_flags flag, int num)
 {
 	int	result;
 

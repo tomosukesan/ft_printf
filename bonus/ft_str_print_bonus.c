@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_print_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:01:41 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/28 21:23:15 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 17:59:52 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	ft_str_print_bonus(va_list ap, t_flags flag)
 	if (s == NULL)
 		return (ft_putstr_fd("(null)", 1));
 	s_len = ft_strlen_bonus(s);
+	if (s_len < 0)
+		return (-1);
 	if (flag.dot && (flag.width == 0 && flag.precision == 0))
 		return (0);
 	if (flag.width > flag.precision && flag.width > s_len)
@@ -48,8 +50,6 @@ static int	ft_process_other(char *s, int s_len, t_flags flag)
 	if ((flag.precision > flag.width && flag.precision > s_len) || !flag.dot)
 	{
 		result = s_len;
-		if (flag.dot && s_len > flag.precision)
-			result = flag.precision;
 		write(1, s, s_len);
 	}
 	else
@@ -82,10 +82,12 @@ static void	ft_str_adapt_width(char *s, int s_len, t_flags flag)
 
 static int	ft_strlen_bonus(const char *str)
 {
-	int	len;
+	long	len;
 
 	len = 0;
 	while (str[len] != '\0')
 		len++;
-	return (len);
+	if (len > INT_MAX)
+		return (-1);
+	return ((int)len);
 }

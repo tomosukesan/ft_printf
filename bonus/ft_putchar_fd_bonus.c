@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 20:03:13 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/08 14:56:56 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 16:37:43 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 int	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
-	return (1);
+	return (write(fd, &c, 1));
 }

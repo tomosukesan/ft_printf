@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:11:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/28 13:23:36 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 18:11:05 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_judge_format(const char **argv, va_list ap, t_flags flag);
 int	ft_printf(const char *argv, ...)
 {
 	va_list	ap;
-	int		result;
+	long	result;
 	int		ret_val;
 
 	result = 0;
@@ -37,10 +37,12 @@ int	ft_printf(const char *argv, ...)
 		}
 		else
 			result += ft_putchar_fd(*argv, 1);
+		if (result > INT_MAX)
+			return (-1);
 		argv++;
 	}
 	va_end(ap);
-	return (result);
+	return ((int)result);
 }
 
 static int	ft_judge_detail(const char **argv, va_list ap)

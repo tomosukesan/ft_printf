@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 19:47:48 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/25 17:03:54 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 18:09:04 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
+	long	i;
 
 	i = 0;
 	if (s == NULL)
@@ -24,5 +24,7 @@ int	ft_putstr_fd(char *s, int fd)
 		write(fd, &s[i], 1);
 		i++;
 	}
-	return (i);
+	if (i > INT_MAX)
+		return (-1);
+	return ((int)i);
 }

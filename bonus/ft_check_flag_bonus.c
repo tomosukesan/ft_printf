@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_flag_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 18:03:38 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/28 13:24:59 by ttachi           ###   ########.fr       */
+/*   Updated: 2022/12/31 18:04:41 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_check_sharp(const char **argv, t_flags *flag)
 
 int	ft_cal_field_num(const char **argv)
 {
-	long long	result;
+	long	result;
 
 	result = 0;
 	while ('0' <= **argv && **argv <= '9')
