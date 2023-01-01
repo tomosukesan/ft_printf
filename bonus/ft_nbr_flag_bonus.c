@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:10:27 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/27 00:46:20 by ttachi           ###   ########.fr       */
+/*   Updated: 2023/01/02 01:00:48 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ static void	ft_adapt_minus(t_flags flag, int num, int z_cnt, int e_cnt)
 {
 	ft_nbr_put_flags(flag, num, z_cnt);
 	if (num < 0)
-		ft_putnbr_fd(num * -1, 1);
+		ft_putnbr_fd((long)num * -1, 1); // int_minが非対応
 	else
-		ft_putnbr_fd(num, 1);
+		ft_putnbr_fd((long)num, 1);
 	while (e_cnt-- > 0)
 		ft_putchar_fd(' ', 1);
 }
@@ -80,9 +80,9 @@ static void	ft_adapt_flags(t_flags flag, int num, int z_cnt, int e_cnt)
 		ft_putchar_fd(' ', 1);
 	ft_nbr_put_flags(flag, num, z_cnt);
 	if (num < 0)
-		ft_putnbr_fd(num * -1, 1);
+		ft_putnbr_fd((long)num * -1, 1); // int_minが非対応
 	else
-		ft_putnbr_fd(num, 1);
+		ft_putnbr_fd((long)num, 1);
 }
 
 static void	ft_nbr_put_flags(t_flags flag, int n, int z_cnt)

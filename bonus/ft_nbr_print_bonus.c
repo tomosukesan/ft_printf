@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nbr_print_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/31 18:05:03 by ttachi           ###   ########.fr       */
+/*   Updated: 2023/01/02 01:01:33 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ static int	ft_put_plus_space_num(t_flags flag, int num)
 		ft_putchar_fd(' ', 1);
 		result++;
 	}
-	ft_putnbr_fd(num, 1);
+	ft_putnbr_fd((long)num, 1);
 	return (result);
 }

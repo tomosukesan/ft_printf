@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:11:22 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/31 18:05:41 by ttachi           ###   ########.fr       */
+/*   Updated: 2023/01/02 00:57:03 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-void	ft_putnbr_fd(int num, int fd)
+void	ft_putnbr_fd(long num, int fd)
 {
 	long	devisor;
 	long	abs_num;
 
 	devisor = 1;
-	abs_num = (long)num;
+	abs_num = num;
 	if (num < 0)
 	{
 		ft_putchar_fd('-', fd);

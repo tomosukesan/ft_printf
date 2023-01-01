@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:52:44 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/31 18:02:30 by ttachi           ###   ########.fr       */
+/*   Updated: 2023/01/02 00:57:16 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		ft_hex_prefix(unsigned int x, t_flags flag, char *rule);
 int		ft_hex_flags(unsigned int x, int width, t_flags flag, char *rule);
 int		ft_putchar_fd(char c, int fd);
 int		ft_putstr_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr_fd(long n, int fd);
 int		ft_cal_abs_digit(long num);
 int		ft_cal_hex_digit(unsigned long num);
 

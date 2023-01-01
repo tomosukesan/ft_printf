@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_print_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttachi <ttachi@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:01:41 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/31 21:52:32 by ttachi           ###   ########.fr       */
+/*   Updated: 2023/01/02 01:42:09 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,15 @@ static int	ft_process_other(char *s, int s_len, t_flags flag)
 {
 	int	result;
 
-	if ((flag.precision > flag.width && flag.precision > s_len) || !flag.dot)
+	if (flag.precision > flag.width && flag.precision > s_len)
+	{
+		if (flag.width > s_len)
+			result = flag.width;
+		else
+			result = s_len;
+		ft_str_adapt_width(s, s_len, flag);
+	}
+	else if (!flag.dot)
 	{
 		result = s_len;
 		write(1, s, s_len);

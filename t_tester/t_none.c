@@ -106,7 +106,7 @@ int main (void)
 
 	puts("\n[%9.10d]");
 	   printf("printf   :%9.10c\n", c);		// undefined
-	tmp1 =   printf("printf   :%3.10s\n", s);
+	tmp1 =   printf("printf   :%9.10s\n", s);
 	   printf("printf   :%9.10d\n", d);
 	   printf("printf   :%9.10d\n", m);
 	   printf("printf   :%9.10u\n", d);
