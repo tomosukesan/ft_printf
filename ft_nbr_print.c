@@ -6,7 +6,7 @@
 /*   By: ttachi <ttachi@student.42tokyo.ja>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:28:07 by ttachi            #+#    #+#             */
-/*   Updated: 2022/12/25 19:18:35 by ttachi           ###   ########.fr       */
+/*   Updated: 2023/01/01 15:23:28 by ttachi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	ft_nbr_print(va_list ap)
 
 static int	ft_putnbr_fd(int num, int digit)
 {
-	long long	devisor;
-	long long	abs_num;
+	long	devisor;
+	long	abs_num;
 
 	devisor = 1;
 	abs_num = (long long)num;
